@@ -1,0 +1,60 @@
+{
+  "actions": [],
+  "allow_rename": 1,
+  "autoname": "field:term_name",
+  "creation": "2026-06-18 09:00:00.000000",
+  "doctype": "DocType",
+  "editable_grid": 1,
+  "engine": "InnoDB",
+  "field_order": ["term_name", "due_days", "discount_percentage", "discount_days", "is_default"],
+  "fields": [
+    {
+      "fieldname": "term_name",
+      "fieldtype": "Data",
+      "in_list_view": 1,
+      "label": "Payment Term Name",
+      "reqd": 1,
+      "unique": 1
+    },
+    {
+      "default": "30",
+      "fieldname": "due_days",
+      "fieldtype": "Int",
+      "in_list_view": 1,
+      "label": "Due Days"
+    },
+    {
+      "fieldname": "discount_percentage",
+      "fieldtype": "Percent",
+      "label": "Discount Percentage"
+    },
+    {
+      "default": "0",
+      "fieldname": "discount_days",
+      "fieldtype": "Int",
+      "label": "Discount Days"
+    },
+    {
+      "default": 0,
+      "fieldname": "is_default",
+      "fieldtype": "Check",
+      "label": "Is Default"
+    }
+  ],
+  "grid_page_length": 50,
+  "index_web_pages_for_search": 1,
+  "links": [],
+  "modified": "2026-06-18 09:00:00.000000",
+  "modified_by": "Administrator",
+  "module": "Accounting",
+  "name": "Payment Term",
+  "owner": "Administrator",
+  "permissions": [],
+  "row_format": "Dynamic",
+  "rows_threshold_for_grid_search": 20,
+  "search_fields": "term_name",
+  "sort_field": "modified",
+  "sort_order": "DESC",
+  "states": [],
+  "track_changes": 1
+}

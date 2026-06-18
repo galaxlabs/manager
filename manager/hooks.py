@@ -247,3 +247,6 @@ app_license = "mit"
 # ignore_translatable_strings_from = []
 
 
+
+# CORS
+allow_cors = ["*"]

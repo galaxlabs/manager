@@ -10,7 +10,10 @@
     "description",
     "quantity",
     "rate",
-    "amount"
+    "amount",
+    "discount_percentage",
+    "discount_amount",
+    "price_list_rate"
   ],
   "fields": [
     {
@@ -67,6 +70,24 @@
       "fieldname": "base_amount",
       "fieldtype": "Currency",
       "label": "Base Amount",
+      "read_only": 1
+    },
+    {
+      "fieldname": "discount_percentage",
+      "fieldtype": "Percent",
+      "label": "Discount %",
+      "in_list_view": 0
+    },
+    {
+      "fieldname": "discount_amount",
+      "fieldtype": "Currency",
+      "label": "Discount Amount",
+      "in_list_view": 0
+    },
+    {
+      "fieldname": "price_list_rate",
+      "fieldtype": "Currency",
+      "label": "Price List Rate",
       "read_only": 1
     }
   ],

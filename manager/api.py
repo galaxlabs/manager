@@ -49,7 +49,7 @@ def get_user_businesses():
 
 def _get_role_permissions(role):
     """Define what each role can do. Returns dict of doctype -> actions."""
-    all_doctypes = ["Account", "Account Transfer", "Bank Reconciliation", "Expense Claim", "Payment", "Receipt",
+    all_doctypes = ["Payment Term", "Payment Schedule", "Account", "Account Transfer", "Bank Reconciliation", "Expense Claim", "Payment", "Receipt",
         "Customer", "Sales Quote", "Sales Order", "Sales Invoice", "Credit Note", "Delivery Note",
         "Late Payment Fee", "Billable Time", "Withholding Tax Receipt",
         "Supplier", "Purchase Quote", "Purchase Order", "Purchase Invoice", "Debit Note", "Goods Receipt",
@@ -69,7 +69,7 @@ def _get_role_permissions(role):
     payroll = ["Employee", "Payslip"]
     fixed = ["Fixed Asset", "Depreciation Entry", "Intangible Asset", "Amortization Entry", "Investment"]
     accounting = ["Journal Entry", "Folder", "Recurring Transaction", "Budget", "Budget Account",
-        "Division", "Currency", "Exchange Rate", "Project"]
+        "Division", "Currency", "Exchange Rate", "Payment Term", "Payment Schedule", "Project"]
     settings = ["Manager Settings", "Tax Code", "Custom Field Def", "Manager User"]
     
     rw = {"read": 1, "write": 1, "create": 1, "delete": 0, "submit": 0, "cancel": 0}
@@ -1420,3 +1420,465 @@ def change_password(old_password, new_password):
     doc.save(ignore_permissions=True)
     frappe.db.commit()
     return {"status": "ok", "message": "Password changed successfully"}
+
+@frappe.whitelist()
+def list_price_lists():
+    return frappe.get_all("Price List",
+        fields=["name", "price_list_name", "is_active", "is_default", "currency"],
+        order_by="price_list_name asc")
+
+@frappe.whitelist()
+def save_price_list(data):
+    import json as _json
+    if isinstance(data, str):
+        data = _json.loads(data)
+    name = data.get("name")
+    if name and frappe.db.exists("Price List", name):
+        doc = frappe.get_doc("Price List", name)
+        for k, v in data.items():
+            if k not in ("name", "doctype", "items"):
+                doc.set(k, v)
+        if "items" in data and isinstance(data["items"], list):
+            doc.set("items", [])
+            for item in data["items"]:
+                doc.append("items", {
+                    "item": item.get("item"),
+                    "rate": item.get("rate"),
+                    "effective_from": item.get("effective_from"),
+                    "effective_to": item.get("effective_to"),
+                })
+        doc.save()
+    else:
+        doc = frappe.get_doc({
+            "doctype": "Price List",
+            "price_list_name": data.get("price_list_name"),
+            "is_active": data.get("is_active", 1),
+            "is_default": data.get("is_default", 0),
+            "currency": data.get("currency"),
+        })
+        if "items" in data and isinstance(data["items"], list):
+            for item in data["items"]:
+                doc.append("items", {
+                    "item": item.get("item"),
+                    "rate": item.get("rate"),
+                    "effective_from": item.get("effective_from"),
+                    "effective_to": item.get("effective_to"),
+                })
+        doc.insert()
+    frappe.db.commit()
+    return {"name": doc.name, "data": doc.as_dict()}
+
+@frappe.whitelist()
+def delete_price_list(name):
+    if not frappe.db.exists("Price List", name):
+        frappe.throw("Price List not found")
+    frappe.delete_doc("Price List", name, force=True)
+    frappe.db.commit()
+    return {"status": "ok"}
+
+@frappe.whitelist()
+def get_price_list_items(price_list):
+    if not frappe.db.exists("Price List", price_list):
+        frappe.throw("Price List not found")
+    doc = frappe.get_doc("Price List", price_list)
+    items = []
+    for row in doc.items:
+        items.append({
+            "item": row.item,
+            "item_name": row.item_name or row.item,
+            "rate": row.rate,
+            "effective_from": str(row.effective_from or ""),
+            "effective_to": str(row.effective_to or ""),
+        })
+    return {"price_list": price_list, "items": items, "currency": doc.currency}
+
+@frappe.whitelist()
+def get_item_price_from_list(item, price_list=None, date=None):
+    """Get the best price for an item from the default or specified price list.
+    Returns the rate from the most specific price list entry."""
+    if price_list:
+        pl_names = [price_list]
+    else:
+        default_pl = frappe.get_all("Price List",
+            filters={"is_default": 1, "is_active": 1},
+            limit=1, pluck="name")
+        pl_names = default_pl
+    if not pl_names:
+        return {"rate": None, "price_list": None, "message": "No active price list found"}
+    for pl_name in pl_names:
+        doc = frappe.get_doc("Price List", pl_name)
+        for row in doc.items:
+            if row.item == item:
+                effective = True
+                if row.effective_from:
+                    from_date = str(row.effective_from)
+                    if date and from_date > date:
+                        effective = False
+                if row.effective_to:
+                    to_date = str(row.effective_to)
+                    if date and to_date < date:
+                        effective = False
+                if effective:
+                    return {"rate": row.rate, "price_list": pl_name, "item": item}
+    return {"rate": None, "price_list": None, "message": f"No price found for item {item}"}
+
+@frappe.whitelist()
+def calculate_invoice_discounts(doctype, name):
+    """Calculate discount amounts and net totals for an invoice"""
+    doc = frappe.get_doc(doctype, name)
+    if not hasattr(doc, "items") or not doc.items:
+        return {"status": "ok", "subtotal": 0, "total_discount": 0, "net_total": 0}
+    subtotal = 0
+    total_discount = 0
+    for row in doc.items:
+        row_amount = row.amount or 0
+        disc_pct = row.get("discount_percentage") or 0
+        disc_amt = row.get("discount_amount") or 0
+        if disc_pct > 0 and disc_amt == 0:
+            disc_amt = round(row_amount * disc_pct / 100, 2)
+        if disc_amt > row_amount:
+            disc_amt = row_amount
+        row.discount_amount = disc_amt
+        net_amount = row_amount - disc_amt
+        subtotal += row_amount
+        total_discount += disc_amt
+    doc.save(ignore_permissions=True)
+    frappe.db.commit()
+    return {
+        "status": "ok",
+        "subtotal": subtotal,
+        "total_discount": total_discount,
+        "net_total": subtotal - total_discount,
+    }
+
+@frappe.whitelist()
+def apply_price_list_to_invoice(doctype, name, price_list=None):
+    """Apply price list rates to all items in an invoice, overriding item rates"""
+    doc = frappe.get_doc(doctype, name)
+    if not hasattr(doc, "items") or not doc.items:
+        return {"status": "ok", "updated": 0}
+    updated = 0
+    for row in doc.items:
+        if not row.item:
+            continue
+        result = get_item_price_from_list(row.item, price_list)
+        if result.get("rate"):
+            row.price_list_rate = row.rate
+            row.rate = result["rate"]
+            row.amount = round((row.rate or 0) * (row.quantity or 1), 2)
+            updated += 1
+    doc.save(ignore_permissions=True)
+    frappe.db.commit()
+    return {"status": "ok", "updated": updated, "price_list": price_list}
+
+# ── Delivery Notes ──
+
+@frappe.whitelist()
+def list_delivery_notes(filters=None, limit=100, limit_start=0):
+    import json
+    if isinstance(filters, str):
+        filters = json.loads(filters) if filters else {}
+    _check_permission("Delivery Note", "read")
+    role = get_user_role()
+    if role != "Administrator":
+        businesses = get_user_businesses()
+        if businesses:
+            biz_names = [b.get("name") if isinstance(b, dict) else b for b in businesses]
+            filters["business"] = ["in", biz_names]
+    total = frappe.db.count("Delivery Note", filters=filters)
+    data = frappe.get_list("Delivery Note", fields=["*"], filters=filters, limit=limit, limit_start=limit_start, order_by="modified desc")
+    return {"data": data, "total": total}
+
+@frappe.whitelist()
+def get_delivery_note(name):
+    _check_permission("Delivery Note", "read")
+    doc = frappe.get_doc("Delivery Note", name)
+    items = []
+    for row in doc.items:
+        items.append({
+            "name": row.name,
+            "item": row.item,
+            "description": row.description,
+            "quantity": row.quantity,
+            "rate": row.rate,
+            "amount": row.amount,
+        })
+    return {"data": doc.as_dict(), "items": items}
+
+@frappe.whitelist()
+def save_delivery_note(data):
+    import json as _json
+    if isinstance(data, str):
+        data = _json.loads(data)
+    _check_permission("Delivery Note", "write" if data.get("name") else "create")
+    name = data.get("name")
+    if name and frappe.db.exists("Delivery Note", name):
+        doc = frappe.get_doc("Delivery Note", name)
+        doc.issue_date = data.get("issue_date", doc.issue_date)
+        doc.customer = data.get("customer", doc.customer)
+        doc.delivery_address = data.get("delivery_address", doc.delivery_address)
+        doc.description = data.get("description", doc.description)
+        doc.sales_invoice = data.get("sales_invoice", doc.sales_invoice)
+        doc.business = data.get("business", doc.business)
+        doc.status = data.get("status", doc.status)
+        doc.sales_executive = data.get("sales_executive", doc.sales_executive)
+        doc.currency = data.get("currency", doc.currency)
+        doc.exchange_rate = data.get("exchange_rate", doc.exchange_rate)
+        total = 0
+        doc.set("items", [])
+        for item in data.get("items", []):
+            amt = (item.get("rate") or 0) * (item.get("quantity") or 1)
+            total += amt
+            doc.append("items", {
+                "item": item.get("item"),
+                "description": item.get("description"),
+                "quantity": item.get("quantity"),
+                "rate": item.get("rate"),
+                "amount": amt,
+            })
+        doc.total_amount = total
+        doc.save()
+    else:
+        doc = frappe.get_doc({
+            "doctype": "Delivery Note",
+            "issue_date": data.get("issue_date"),
+            "customer": data.get("customer"),
+            "delivery_address": data.get("delivery_address"),
+            "description": data.get("description"),
+            "sales_invoice": data.get("sales_invoice"),
+            "business": data.get("business"),
+            "status": data.get("status", "Draft"),
+            "sales_executive": data.get("sales_executive"),
+            "currency": data.get("currency", "USD"),
+            "exchange_rate": data.get("exchange_rate", 1.0),
+        })
+        total = 0
+        for item in data.get("items", []):
+            amt = (item.get("rate") or 0) * (item.get("quantity") or 1)
+            total += amt
+            doc.append("items", {
+                "item": item.get("item"),
+                "description": item.get("description"),
+                "quantity": item.get("quantity"),
+                "rate": item.get("rate"),
+                "amount": amt,
+            })
+        doc.total_amount = total
+        doc.insert()
+    frappe.db.commit()
+    return {"name": doc.name, "data": doc.as_dict()}
+
+@frappe.whitelist()
+def delete_delivery_note(name):
+    _check_permission("Delivery Note", "delete")
+    if not frappe.db.exists("Delivery Note", name):
+        frappe.throw("Delivery Note not found")
+    frappe.delete_doc("Delivery Note", name, force=True)
+    frappe.db.commit()
+    return {"status": "ok"}
+# ── Payment Terms ──
+
+@frappe.whitelist()
+def list_payment_terms():
+    _check_permission("Payment Term", "read")
+    data = frappe.get_all("Payment Term", fields=["*"], order_by="term_name asc")
+    return {"data": data}
+
+@frappe.whitelist()
+def save_payment_term(data):
+    import json as _json
+    if isinstance(data, str):
+        data = _json.loads(data)
+    _check_permission("Payment Term", "write" if data.get("name") else "create")
+    name = data.get("name")
+    if name and frappe.db.exists("Payment Term", name):
+        doc = frappe.get_doc("Payment Term", name)
+        doc.term_name = data.get("term_name", doc.term_name)
+        doc.due_days = data.get("due_days", doc.due_days)
+        doc.discount_percentage = data.get("discount_percentage", doc.discount_percentage)
+        doc.discount_days = data.get("discount_days", doc.discount_days)
+        doc.is_default = data.get("is_default", doc.is_default)
+        doc.save()
+    else:
+        doc = frappe.get_doc({
+            "doctype": "Payment Term",
+            "term_name": data.get("term_name"),
+            "due_days": data.get("due_days", 30),
+            "discount_percentage": data.get("discount_percentage", 0),
+            "discount_days": data.get("discount_days", 0),
+            "is_default": data.get("is_default", 0),
+        })
+        doc.insert()
+    frappe.db.commit()
+    return {"name": doc.name, "data": doc.as_dict()}
+
+@frappe.whitelist()
+def delete_payment_term(name):
+    _check_permission("Payment Term", "delete")
+    if not frappe.db.exists("Payment Term", name):
+        frappe.throw("Payment Term not found")
+    frappe.delete_doc("Payment Term", name, force=True)
+    frappe.db.commit()
+    return {"status": "ok"}
+# ── Budget vs Actual ──
+
+@frappe.whitelist()
+def get_budget_vs_actual(name):
+    _check_permission("Budget", "read")
+    doc = frappe.get_doc("Budget", name)
+    result = {
+        "name": doc.name,
+        "budget_name": doc.budget_name,
+        "fiscal_year": doc.fiscal_year,
+        "business": doc.business,
+        "accounts": [],
+        "total_budget": 0,
+        "total_actual": 0,
+    }
+    for row in doc.accounts:
+        account_name = row.account
+        budget_amt = row.budget_amount or 0
+        actual_amt = 0
+        if account_name:
+            acct = frappe.db.get_value("Account", account_name, "balance")
+            actual_amt = abs(acct or 0)
+        result["accounts"].append({
+            "account": account_name,
+            "budget_amount": budget_amt,
+            "actual_amount": actual_amt,
+            "variance": round(actual_amt - budget_amt, 2),
+        })
+        result["total_budget"] += budget_amt
+        result["total_actual"] += actual_amt
+    result["total_variance"] = round(result["total_actual"] - result["total_budget"], 2)
+    return {"data": result}
+# ── Recurring Transactions ──
+
+@frappe.whitelist()
+def toggle_recurring_transaction(name, enabled=0):
+    _check_permission("Recurring Transaction", "write")
+    doc = frappe.get_doc("Recurring Transaction", name)
+    doc.enabled = 1 if enabled else 0
+    doc.save()
+    frappe.db.commit()
+    return {"status": "ok", "enabled": doc.enabled}
+
+@frappe.whitelist()
+def run_recurring_transaction(name):
+    _check_permission("Recurring Transaction", "write")
+    doc = frappe.get_doc("Recurring Transaction", name)
+    if not doc.enabled:
+        frappe.throw("Recurring transaction is disabled")
+    result = _create_from_template(doc)
+    # Update next_date based on frequency
+    from datetime import datetime, timedelta
+    import json as _json
+    from dateutil.relativedelta import relativedelta
+    next_dt = doc.next_date
+    if doc.frequency == "Daily":
+        next_dt = next_dt + timedelta(days=1)
+    elif doc.frequency == "Weekly":
+        next_dt = next_dt + timedelta(weeks=1)
+    elif doc.frequency == "Monthly":
+        next_dt = next_dt + relativedelta(months=1)
+    elif doc.frequency == "Quarterly":
+        next_dt = next_dt + relativedelta(months=3)
+    elif doc.frequency == "Yearly":
+        next_dt = next_dt + relativedelta(years=1)
+    doc.next_date = next_dt
+    doc.save()
+    frappe.db.commit()
+    return {"status": "ok", "created": result}
+
+@frappe.whitelist()
+def process_due_recurring():
+    _check_permission("Recurring Transaction", "write")
+    from datetime import datetime
+    due = frappe.get_all("Recurring Transaction",
+        filters={"enabled": 1, "next_date": ["<=", datetime.now().strftime("%Y-%m-%d")]},
+        fields=["name", "title", "next_date", "frequency"])
+    results = []
+    for r in due:
+        try:
+            doc = frappe.get_doc("Recurring Transaction", r.name)
+            created = _create_from_template(doc)
+            from datetime import timedelta
+            from dateutil.relativedelta import relativedelta
+            next_dt = doc.next_date
+            if doc.frequency == "Daily":
+                next_dt = next_dt + timedelta(days=1)
+            elif doc.frequency == "Weekly":
+                next_dt = next_dt + timedelta(weeks=1)
+            elif doc.frequency == "Monthly":
+                next_dt = next_dt + relativedelta(months=1)
+            elif doc.frequency == "Quarterly":
+                next_dt = next_dt + relativedelta(months=3)
+            elif doc.frequency == "Yearly":
+                next_dt = next_dt + relativedelta(years=1)
+            doc.next_date = next_dt
+            doc.save()
+            results.append({"name": r.name, "title": r.title, "status": "ok", "created": created})
+        except Exception as e:
+            results.append({"name": r.name, "title": r.title, "status": "error", "error": str(e)})
+    frappe.db.commit()
+    return {"results": results, "total": len(results)}
+
+def _create_from_template(doc):
+    """Create a transaction from the recurring template"""
+    import json as _json
+    template = _json.loads(doc.template_data) if isinstance(doc.template_data, str) else (doc.template_data or {})
+    if not template:
+        frappe.throw("No template data configured")
+    doctype = doc.reference_doctype
+    data = dict(template)
+    data["doctype"] = doctype
+    data["business"] = data.get("business") or doc.business
+    data["date"] = data.get("date") or str(doc.next_date)
+    if "issue_date" not in data:
+        data["issue_date"] = str(doc.next_date)
+    new_doc = frappe.get_doc(data)
+    new_doc.insert()
+    return new_doc.name
+# ── Stock Balance ──
+
+@frappe.whitelist()
+def get_stock_balance():
+    _check_permission("Item", "read")
+    items = frappe.get_all("Item", fields=["name", "item_name", "item_type", "opening_stock", "opening_value"])
+    result = []
+    for item in items:
+        qty = item.opening_stock or 0
+        val = item.opening_value or 0
+        transfers_in = frappe.db.get_all("Inventory Transfer Item", filters={"item": item.name}, pluck="quantity")
+        for tq in transfers_in:
+            qty += tq or 0
+        result.append({
+            "name": item.name,
+            "item_name": item.item_name or item.name,
+            "item_type": item.item_type,
+            "quantity": qty,
+            "value": val,
+        })
+    return {"data": result}
+
+# ── CSV Import ──
+
+@frappe.whitelist()
+def import_csv(doctype, data):
+    import json as _json
+    if isinstance(data, str):
+        data = _json.loads(data)
+    _check_permission(doctype, "create")
+    created = 0
+    errors = []
+    for row in data:
+        try:
+            doc_data = {"doctype": doctype}
+            doc_data.update(row)
+            doc = frappe.get_doc(doc_data)
+            doc.insert()
+            created += 1
+        except Exception as e:
+            errors.append({"row": row, "error": str(e)})
+    frappe.db.commit()
+    return {"created": created, "errors": errors}
