@@ -1,0 +1,131 @@
+{
+  "actions": [],
+  "allow_rename": 1,
+  "creation": "2026-06-17 15:39:11.303090",
+  "doctype": "DocType",
+  "editable_grid": 1,
+  "engine": "InnoDB",
+  "field_order": [
+    "title",
+    "supplier",
+    "date",
+    "purchase_order",
+    "items",
+    "total_amount",
+    "status",
+    "amended_from"
+  ],
+  "fields": [
+    {
+      "fieldname": "division",
+      "fieldtype": "Link",
+      "label": "Division",
+      "options": "Division"
+    },
+    {
+      "fieldname": "business",
+      "fieldtype": "Link",
+      "options": "Business",
+      "label": "Business",
+      "in_standard_filter": 1
+    },
+    {
+      "fieldname": "title",
+      "fieldtype": "Data",
+      "in_list_view": 1,
+      "label": "Title",
+      "reqd": 1
+    },
+    {
+      "fieldname": "supplier",
+      "fieldtype": "Link",
+      "label": "Supplier",
+      "options": "Supplier"
+    },
+    {
+      "fieldname": "date",
+      "fieldtype": "Date",
+      "in_list_view": 1,
+      "label": "Date",
+      "reqd": 1
+    },
+    {
+      "fieldname": "purchase_order",
+      "fieldtype": "Link",
+      "label": "Purchase Order",
+      "options": "Purchase Order"
+    },
+    {
+      "fieldname": "items",
+      "fieldtype": "Table",
+      "label": "Items",
+      "options": "Invoice Item"
+    },
+    {
+      "fieldname": "total_amount",
+      "fieldtype": "Currency",
+      "label": "Total Amount"
+    },
+    {
+      "default": "Draft",
+      "fieldname": "status",
+      "fieldtype": "Select",
+      "label": "Status",
+      "options": "Draft\nSubmitted\nCancelled"
+    },
+    {
+      "fieldname": "amended_from",
+      "fieldtype": "Link",
+      "label": "Amended From",
+      "no_copy": 1,
+      "options": "Goods Receipt",
+      "print_hide": 1,
+      "read_only": 1,
+      "search_index": 1
+    },
+    {
+      "fieldname": "currency",
+      "fieldtype": "Select",
+      "label": "Currency",
+      "options": "USD\nEUR\nGBP\nPKR\nINR\nAED\nSAR\nQAR\nOMR\nBHD\nKWD\nMYR\nSGD\nNZD\nAUD\nZAR\nNGN\nEGP\nJOD\nMUR\nGHS",
+      "default": "USD"
+    },
+    {
+      "fieldname": "exchange_rate",
+      "fieldtype": "Float",
+      "label": "Exchange Rate",
+      "default": 1.0
+    }
+  ],
+  "grid_page_length": 50,
+  "index_web_pages_for_search": 1,
+  "is_submittable": 1,
+  "links": [],
+  "modified": "2026-06-17 15:39:11.303090",
+  "modified_by": "Administrator",
+  "module": "Purchases",
+  "name": "Goods Receipt",
+  "owner": "Administrator",
+  "permissions": [
+    {
+      "amend": 1,
+      "cancel": 1,
+      "create": 1,
+      "delete": 1,
+      "email": 1,
+      "export": 1,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "System Manager",
+      "share": 1,
+      "submit": 1,
+      "write": 1
+    }
+  ],
+  "row_format": "Dynamic",
+  "rows_threshold_for_grid_search": 20,
+  "sort_field": "modified",
+  "sort_order": "DESC",
+  "states": []
+}

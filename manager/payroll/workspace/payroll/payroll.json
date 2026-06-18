@@ -1,0 +1,36 @@
+{
+  "charts": [],
+  "content": "[{\"type\": \"header\", \"data\": {\"text\": \"<span class=h4><b>Payroll</b></span>\", \"col\": 12}}, {\"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Employees\", \"link_to\": \"Employee\", \"doc_view\": \"List\", \"type\": \"DocType\", \"icon\": \"fa fa-users\", \"format\": \"Not Set\", \"color\": \"Purple\", \"col\": 3, \"label\": \"Employees\"}, \"id\": \"employee\"}]",
+  "creation": "2026-06-17 14:06:03.280898",
+  "custom_blocks": [],
+  "docstatus": 0,
+  "doctype": "Workspace",
+  "hide_custom": 0,
+  "icon": "fa fa-id-card",
+  "idx": 0,
+  "indicator_color": "green",
+  "is_hidden": 0,
+  "label": "Payroll",
+  "links": [],
+  "modified": "2026-06-17 14:06:03.280898",
+  "modified_by": "Administrator",
+  "module": "Payroll",
+  "name": "Payroll",
+  "number_cards": [],
+  "owner": "Administrator",
+  "public": 1,
+  "quick_lists": [],
+  "roles": [],
+  "sequence_id": 0.0,
+  "shortcuts": [],
+  "title": "Payroll",
+  "fields": [
+    {
+      "fieldname": "business",
+      "fieldtype": "Link",
+      "options": "Business",
+      "label": "Business",
+      "in_standard_filter": 1
+    }
+  ]
+}

@@ -1,0 +1,102 @@
+{
+  "actions": [],
+  "allow_rename": 1,
+  "creation": "2026-06-17 12:45:42.269531",
+  "doctype": "DocType",
+  "editable_grid": 1,
+  "engine": "InnoDB",
+  "field_order": [
+    "date",
+    "reference",
+    "description",
+    "accounts",
+    "amended_from"
+  ],
+  "fields": [
+    {
+      "fieldname": "currency",
+      "fieldtype": "Select",
+      "label": "Currency",
+      "options": "USD\nEUR\nGBP\nPKR\nINR\nAED\nSAR\nQAR\nOMR\nBHD\nKWD\nMYR\nSGD\nNZD\nAUD\nZAR\nNGN\nEGP\nJOD\nMUR\nGHS",
+      "default": "USD",
+      "in_list_view": 1,
+      "in_standard_filter": 1
+    },
+    {
+      "fieldname": "exchange_rate",
+      "fieldtype": "Float",
+      "label": "Exchange Rate",
+      "description": "Rate: 1 base currency = X this currency",
+      "default": 1.0
+    },
+    {
+      "fieldname": "division",
+      "fieldtype": "Link",
+      "label": "Division",
+      "options": "Division"
+    },
+    {
+      "fieldname": "business",
+      "fieldtype": "Link",
+      "options": "Business",
+      "label": "Business",
+      "in_standard_filter": 1
+    },
+    {
+      "default": "Today",
+      "fieldname": "date",
+      "fieldtype": "Date",
+      "in_list_view": 1,
+      "label": "Date",
+      "reqd": 1
+    },
+    {
+      "fieldname": "reference",
+      "fieldtype": "Data",
+      "label": "Reference"
+    },
+    {
+      "fieldname": "description",
+      "fieldtype": "Text Editor",
+      "label": "Description"
+    },
+    {
+      "fieldname": "accounts",
+      "fieldtype": "Table",
+      "label": "Accounts",
+      "options": "Journal Entry Account",
+      "reqd": 0
+    },
+    {
+      "fieldname": "amended_from",
+      "fieldtype": "Link",
+      "label": "Amended From",
+      "no_copy": 1,
+      "options": "Journal Entry",
+      "print_hide": 1,
+      "read_only": 1,
+      "search_index": 1
+    },
+    {
+      "fieldname": "custom_fields_json",
+      "fieldtype": "JSON",
+      "label": "Custom Fields"
+    }
+  ],
+  "grid_page_length": 50,
+  "index_web_pages_for_search": 1,
+  "is_submittable": 1,
+  "links": [],
+  "modified": "2026-06-17 12:45:42.269531",
+  "modified_by": "Administrator",
+  "module": "Accounting",
+  "name": "Journal Entry",
+  "owner": "Administrator",
+  "permissions": [],
+  "row_format": "Dynamic",
+  "rows_threshold_for_grid_search": 20,
+  "sort_field": "modified",
+  "sort_order": "DESC",
+  "states": [],
+  "track_changes": 1
+}

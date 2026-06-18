@@ -1,0 +1,415 @@
+{
+  "actions": [],
+  "allow_rename": 1,
+  "creation": "2026-06-17 13:06:29.740863",
+  "doctype": "DocType",
+  "editable_grid": 1,
+  "engine": "InnoDB",
+  "issingle": 1,
+  "field_order": [
+    "company_name",
+    "company_address",
+    "company_email",
+    "company_phone",
+    "currency",
+    "country",
+    "date_format",
+    "fiscal_year_start",
+    "first_month_of_financial_year",
+    "sb_modules",
+    "module_sales",
+    "module_purchases",
+    "module_banking",
+    "module_inventory",
+    "module_payroll",
+    "module_fixed_assets",
+    "module_accounting",
+    "sb_chart",
+    "chart_of_accounts_imported",
+    "sb_tax",
+    "company_tax_id",
+    "default_tax_code",
+    "sb_lock",
+    "lock_date",
+    "sb_currency",
+    "enable_multi_currency",
+    "sb_default_accounts",
+    "default_ar_account",
+    "default_ap_account",
+    "default_cash_account",
+    "default_sales_account",
+    "default_purchase_account",
+    "extensions"
+  ],
+  "fields": [
+    {
+      "fieldname": "business",
+      "fieldtype": "Link",
+      "options": "Business",
+      "label": "Business",
+      "in_standard_filter": 1
+    },
+    {
+      "fieldname": "company_name",
+      "fieldtype": "Data",
+      "in_list_view": 1,
+      "label": "Company Name",
+      "reqd": 1
+    },
+    {
+      "fieldname": "company_address",
+      "fieldtype": "Small Text",
+      "label": "Company Address"
+    },
+    {
+      "fieldname": "company_email",
+      "fieldtype": "Data",
+      "label": "Company Email"
+    },
+    {
+      "fieldname": "company_phone",
+      "fieldtype": "Data",
+      "label": "Company Phone"
+    },
+    {
+      "default": "USD",
+      "fieldname": "currency",
+      "fieldtype": "Select",
+      "label": "Base Currency",
+      "options": "USD\nEUR\nGBP\nPKR\nINR\nAED"
+    },
+    {
+      "fieldname": "country",
+      "fieldtype": "Select",
+      "label": "Country",
+      "options": "United States\nAustralia\nBahrain\nEgypt\nGhana\nIreland\nJordan\nMalaysia\nMauritius\nNew Zealand\nNigeria\nOman\nPakistan\nSaudi Arabia\nSouth Africa\nUnited Arab Emirates\nUnited Kingdom"
+    },
+    {
+      "default": "MM/DD/YYYY",
+      "fieldname": "date_format",
+      "fieldtype": "Select",
+      "label": "Date Format",
+      "options": "MM/DD/YYYY\nDD/MM/YYYY\nYYYY-MM-DD"
+    },
+    {
+      "fieldname": "fiscal_year_start",
+      "fieldtype": "Date",
+      "label": "Fiscal Year Start"
+    },
+    {
+      "default": "January",
+      "fieldname": "first_month_of_financial_year",
+      "fieldtype": "Select",
+      "label": "First Month of FY",
+      "options": "January\nFebruary\nMarch\nApril\nMay\nJune\nJuly\nAugust\nSeptember\nOctober\nNovember\nDecember"
+    },
+    {
+      "fieldname": "language",
+      "fieldtype": "Select",
+      "label": "Language",
+      "options": "English (US)\nEnglish (UK)\nArabic\nUrdu\nFrench\nSpanish\nGerman\nChinese"
+    },
+    {
+      "fieldname": "time_format",
+      "fieldtype": "Select",
+      "label": "Time Format",
+      "options": "12-hour (1:30 PM)\n24-hour (13:30)"
+    },
+    {
+      "fieldname": "first_day_of_week",
+      "fieldtype": "Select",
+      "label": "First Day of Week",
+      "options": "Sunday\nMonday\nTuesday\nWednesday\nThursday\nFriday\nSaturday"
+    },
+    {
+      "fieldname": "number_format",
+      "fieldtype": "Select",
+      "label": "Number Format",
+      "options": "1,234,567.89 (US)\n1.234.567,89 (EU)\n1 234 567.89 (UK)\n1,234,567.89 (PK)"
+    },
+    {
+      "fieldname": "number_decimal",
+      "fieldtype": "Select",
+      "label": "Decimal Separator",
+      "options": ". (dot)\n, (comma)"
+    },
+    {
+      "fieldname": "number_group",
+      "fieldtype": "Select",
+      "label": "Group Separator",
+      "options": ", (comma)\n. (dot)\n(space)"
+    },
+    {
+      "fieldname": "sb_modules",
+      "fieldtype": "Section Break",
+      "label": "Module Settings"
+    },
+    {
+      "default": "1",
+      "fieldname": "module_sales",
+      "fieldtype": "Check",
+      "label": "Enable Sales"
+    },
+    {
+      "default": "1",
+      "fieldname": "module_purchases",
+      "fieldtype": "Check",
+      "label": "Enable Purchases"
+    },
+    {
+      "default": "1",
+      "fieldname": "module_banking",
+      "fieldtype": "Check",
+      "label": "Enable Banking"
+    },
+    {
+      "default": "1",
+      "fieldname": "module_inventory",
+      "fieldtype": "Check",
+      "label": "Enable Inventory"
+    },
+    {
+      "default": "0",
+      "fieldname": "module_payroll",
+      "fieldtype": "Check",
+      "label": "Enable Payroll"
+    },
+    {
+      "default": "1",
+      "fieldname": "module_fixed_assets",
+      "fieldtype": "Check",
+      "label": "Enable Fixed Assets"
+    },
+    {
+      "fieldname": "sb_accounting",
+      "fieldtype": "Section Break",
+      "label": "Accounting Method"
+    },
+    {
+      "fieldname": "accounting_method",
+      "fieldtype": "Select",
+      "label": "Accounting Method",
+      "options": "Accrual\nCash"
+    },
+    {
+      "fieldname": "reporting_period",
+      "fieldtype": "Select",
+      "label": "Reporting Period",
+      "options": "Monthly\nQuarterly\nYearly"
+    },
+    {
+      "default": "1",
+      "fieldname": "module_accounting",
+      "fieldtype": "Check",
+      "label": "Enable Accounting"
+    },
+    {
+      "fieldname": "sb_chart",
+      "fieldtype": "Section Break",
+      "label": "Chart of Accounts"
+    },
+    {
+      "default": "0",
+      "fieldname": "chart_of_accounts_imported",
+      "fieldtype": "Check",
+      "label": "Chart of Accounts Imported",
+      "read_only": 1
+    },
+    {
+      "fieldname": "sb_tax",
+      "fieldtype": "Section Break",
+      "label": "Tax Settings"
+    },
+    {
+      "fieldname": "company_tax_id",
+      "fieldtype": "Data",
+      "label": "Company Tax ID"
+    },
+    {
+      "fieldname": "default_tax_code",
+      "fieldtype": "Link",
+      "label": "Default Tax Code",
+      "options": "Tax Code"
+    },
+    {
+      "fieldname": "sb_lock",
+      "fieldtype": "Section Break",
+      "label": "Locking"
+    },
+    {
+      "fieldname": "lock_date",
+      "fieldtype": "Date",
+      "label": "Lock Date (prevent editing before)"
+    },
+    {
+      "fieldname": "sb_currency",
+      "fieldtype": "Section Break",
+      "label": "Multi-Currency"
+    },
+    {
+      "fieldname": "enable_multi_currency",
+      "fieldtype": "Check",
+      "label": "Enable Multi-Currency"
+    },
+    {
+      "fieldname": "exchange_rate_update_frequency",
+      "fieldtype": "Select",
+      "label": "Exchange Rate Update Frequency",
+      "options": "Manual\nDaily\nWeekly\nMonthly"
+    },
+    {
+      "fieldname": "auto_update_rates",
+      "fieldtype": "Check",
+      "label": "Auto-update Exchange Rates from API"
+    },
+    {
+      "fieldname": "sb_default_accounts",
+      "fieldtype": "Section Break",
+      "label": "Default Accounts"
+    },
+    {
+      "fieldname": "default_ar_account",
+      "fieldtype": "Link",
+      "label": "Default Accounts Receivable",
+      "options": "Account"
+    },
+    {
+      "fieldname": "default_ap_account",
+      "fieldtype": "Link",
+      "label": "Default Accounts Payable",
+      "options": "Account"
+    },
+    {
+      "fieldname": "default_cash_account",
+      "fieldtype": "Link",
+      "label": "Default Cash/Bank Account",
+      "options": "Account"
+    },
+    {
+      "fieldname": "default_sales_account",
+      "fieldtype": "Link",
+      "label": "Default Sales Account",
+      "options": "Account"
+    },
+    {
+      "fieldname": "default_purchase_account",
+      "fieldtype": "Link",
+      "label": "Default Purchase Account",
+      "options": "Account"
+    },
+    {
+      "fieldname": "extensions",
+      "fieldtype": "JSON",
+      "label": "Extension Configurations"
+    },
+    {
+      "fieldname": "settings_config",
+      "label": "All Settings Configuration",
+      "fieldtype": "JSON",
+      "description": "Stores all 32 settings categories as JSON"
+    },
+    {
+      "fieldname": "sidebar_config",
+      "label": "Sidebar Configuration",
+      "fieldtype": "JSON",
+      "description": "Hidden / visible tab configuration"
+    },
+    {
+      "fieldname": "sb_sales",
+      "fieldtype": "Section Break",
+      "label": "Sales Settings"
+    },
+    {
+      "fieldname": "default_customer_terms",
+      "fieldtype": "Data",
+      "label": "Default Customer Payment Terms"
+    },
+    {
+      "fieldname": "auto_apply_late_fees",
+      "fieldtype": "Check",
+      "label": "Auto-apply Late Payment Fees"
+    },
+    {
+      "fieldname": "sb_purchases",
+      "fieldtype": "Section Break",
+      "label": "Purchases Settings"
+    },
+    {
+      "fieldname": "default_supplier_terms",
+      "fieldtype": "Data",
+      "label": "Default Supplier Payment Terms"
+    },
+    {
+      "fieldname": "sb_inventory",
+      "fieldtype": "Section Break",
+      "label": "Inventory Settings"
+    },
+    {
+      "fieldname": "default_stock_account",
+      "fieldtype": "Link",
+      "label": "Default Stock Account",
+      "options": "Account"
+    },
+    {
+      "fieldname": "costing_method",
+      "fieldtype": "Select",
+      "label": "Costing Method",
+      "options": "FIFO\nAverage Cost"
+    },
+    {
+      "fieldname": "default_cogs_account",
+      "fieldtype": "Link",
+      "label": "Default COGS Account",
+      "options": "Account"
+    },
+    {
+      "fieldname": "sb_payroll",
+      "fieldtype": "Section Break",
+      "label": "Payroll Settings"
+    },
+    {
+      "fieldname": "default_salary_account",
+      "fieldtype": "Link",
+      "label": "Default Salary Expense Account",
+      "options": "Account"
+    },
+    {
+      "fieldname": "default_employee_clearing",
+      "fieldtype": "Link",
+      "label": "Default Employee Clearing Account",
+      "options": "Account"
+    },
+    {
+      "fieldname": "auto_generate_payslips",
+      "fieldtype": "Check",
+      "label": "Auto-generate Monthly Payslips"
+    }
+  ],
+  "grid_page_length": 50,
+  "index_web_pages_for_search": 1,
+  "links": [],
+  "modified": "2026-06-17 13:06:29.740863",
+  "modified_by": "Administrator",
+  "module": "Accounting",
+  "name": "Manager Settings",
+  "owner": "Administrator",
+  "permissions": [
+    {
+      "create": 1,
+      "delete": 1,
+      "email": 1,
+      "export": 1,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "System Manager",
+      "share": 1,
+      "write": 1
+    }
+  ],
+  "row_format": "Dynamic",
+  "rows_threshold_for_grid_search": 20,
+  "sort_field": "modified",
+  "sort_order": "DESC",
+  "states": []
+}

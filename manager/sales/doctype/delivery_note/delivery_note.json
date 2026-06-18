@@ -1,0 +1,127 @@
+{
+  "actions": [],
+  "allow_rename": 1,
+  "autoname": "naming_series:",
+  "creation": "2026-06-17 12:46:52.648679",
+  "doctype": "DocType",
+  "editable_grid": 1,
+  "engine": "InnoDB",
+  "field_order": [
+    "naming_series",
+    "date",
+    "customer",
+    "description",
+    "items",
+    "amount",
+    "amended_from"
+  ],
+  "fields": [
+    {
+      "fieldname": "division",
+      "fieldtype": "Link",
+      "label": "Division",
+      "options": "Division"
+    },
+    {
+      "fieldname": "business",
+      "fieldtype": "Link",
+      "options": "Business",
+      "label": "Business",
+      "in_standard_filter": 1
+    },
+    {
+      "default": "DN-",
+      "fieldname": "naming_series",
+      "fieldtype": "Select",
+      "hidden": 1,
+      "label": "Series",
+      "options": "DN-\nDEL-"
+    },
+    {
+      "default": "Today",
+      "fieldname": "date",
+      "fieldtype": "Date",
+      "in_list_view": 1,
+      "label": "Date",
+      "reqd": 1
+    },
+    {
+      "fieldname": "customer",
+      "fieldtype": "Link",
+      "in_list_view": 1,
+      "label": "Customer",
+      "options": "Customer",
+      "reqd": 1
+    },
+    {
+      "fieldname": "description",
+      "fieldtype": "Small Text",
+      "label": "Description"
+    },
+    {
+      "fieldname": "items",
+      "fieldtype": "Table",
+      "label": "Delivery Items",
+      "options": "Invoice Item",
+      "reqd": 0
+    },
+    {
+      "fieldname": "amount",
+      "fieldtype": "Currency",
+      "label": "Amount",
+      "read_only": 1
+    },
+    {
+      "fieldname": "amended_from",
+      "fieldtype": "Link",
+      "label": "Amended From",
+      "no_copy": 1,
+      "options": "Delivery Note",
+      "print_hide": 1,
+      "read_only": 1,
+      "search_index": 1
+    },
+    {
+      "fieldname": "status",
+      "fieldtype": "Select",
+      "options": "Draft\nSubmitted\nCancelled",
+      "label": "Status",
+      "allow_on_submit": true,
+      "reqd": false
+    },
+    {
+      "fieldname": "custom_fields_json",
+      "fieldtype": "JSON",
+      "label": "Custom Fields"
+    },
+    {
+      "fieldname": "currency",
+      "fieldtype": "Select",
+      "label": "Currency",
+      "options": "USD\nEUR\nGBP\nPKR\nINR\nAED\nSAR\nQAR\nOMR\nBHD\nKWD\nMYR\nSGD\nNZD\nAUD\nZAR\nNGN\nEGP\nJOD\nMUR\nGHS",
+      "default": "USD"
+    },
+    {
+      "fieldname": "exchange_rate",
+      "fieldtype": "Float",
+      "label": "Exchange Rate",
+      "default": 1.0
+    }
+  ],
+  "grid_page_length": 50,
+  "index_web_pages_for_search": 1,
+  "is_submittable": 1,
+  "links": [],
+  "modified": "2026-06-17 12:46:52.648679",
+  "modified_by": "Administrator",
+  "module": "Sales",
+  "name": "Delivery Note",
+  "owner": "Administrator",
+  "permissions": [],
+  "row_format": "Dynamic",
+  "rows_threshold_for_grid_search": 20,
+  "sort_field": "modified",
+  "sort_order": "DESC",
+  "states": [],
+  "track_changes": 1
+}

@@ -1,0 +1,77 @@
+{
+  "doctype": "DocType",
+  "name": "Business",
+  "module": "Accounting",
+  "custom": 0,
+  "is_submittable": 0,
+  "is_child_table": 0,
+  "istable": 0,
+  "is_single": 0,
+  "editable_grid": 1,
+  "track_changes": 1,
+  "autoname": "field:business_name",
+  "fields": [
+    {
+      "fieldname": "business",
+      "fieldtype": "Link",
+      "options": "Business",
+      "label": "Business",
+      "in_standard_filter": 1
+    },
+    {
+      "fieldname": "business_name",
+      "fieldtype": "Data",
+      "label": "Business Name",
+      "reqd": 1,
+      "unique": 1
+    },
+    {
+      "fieldname": "address",
+      "fieldtype": "Small Text",
+      "label": "Address"
+    },
+    {
+      "fieldname": "currency",
+      "fieldtype": "Select",
+      "label": "Currency",
+      "options": "USD\nEUR\nGBP\nPKR\nINR\nAED",
+      "default": "USD"
+    },
+    {
+      "fieldname": "tax_id",
+      "fieldtype": "Data",
+      "label": "Tax ID"
+    },
+    {
+      "fieldname": "phone",
+      "fieldtype": "Data",
+      "label": "Phone"
+    },
+    {
+      "fieldname": "email",
+      "fieldtype": "Data",
+      "label": "Email"
+    },
+    {
+      "fieldname": "is_active",
+      "fieldtype": "Check",
+      "label": "Active",
+      "default": 1
+    },
+    {
+      "fieldname": "users",
+      "fieldtype": "Table",
+      "options": "Business User",
+      "label": "Users"
+    }
+  ],
+  "permissions": [
+    {
+      "role": "System Manager",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 1
+    }
+  ]
+}

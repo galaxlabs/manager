@@ -1,0 +1,75 @@
+{
+  "actions": [],
+  "allow_rename": 1,
+  "autoname": "field:account_name",
+  "creation": "2026-06-17 12:45:41.650228",
+  "doctype": "DocType",
+  "editable_grid": 1,
+  "engine": "InnoDB",
+  "field_order": [
+    "account_name",
+    "account_type",
+    "parent_account",
+    "balance",
+    "is_group"
+  ],
+  "fields": [
+    {
+      "fieldname": "business",
+      "fieldtype": "Link",
+      "options": "Business",
+      "label": "Business",
+      "in_standard_filter": 1
+    },
+    {
+      "fieldname": "account_name",
+      "fieldtype": "Data",
+      "in_list_view": 1,
+      "label": "Name",
+      "reqd": 1,
+      "unique": 1
+    },
+    {
+      "fieldname": "account_type",
+      "fieldtype": "Select",
+      "in_list_view": 1,
+      "label": "Type",
+      "options": "Asset\nLiability\nEquity\nIncome\nExpense\nBank\nCash\nReceivable\nPayable\nFixed Asset\nAccumulated Depreciation\nStock\nDepreciation\nCost of Goods Sold",
+      "reqd": 1
+    },
+    {
+      "fieldname": "parent_account",
+      "fieldtype": "Link",
+      "label": "Parent Account",
+      "options": "Account"
+    },
+    {
+      "default": "0",
+      "fieldname": "balance",
+      "fieldtype": "Currency",
+      "label": "Balance",
+      "read_only": 1
+    },
+    {
+      "default": "0",
+      "fieldname": "is_group",
+      "fieldtype": "Check",
+      "label": "Is Group"
+    }
+  ],
+  "grid_page_length": 50,
+  "index_web_pages_for_search": 1,
+  "links": [],
+  "modified": "2026-06-17 12:45:41.650228",
+  "modified_by": "Administrator",
+  "module": "Banking",
+  "name": "Account",
+  "owner": "Administrator",
+  "permissions": [],
+  "row_format": "Dynamic",
+  "rows_threshold_for_grid_search": 20,
+  "sort_field": "modified",
+  "sort_order": "DESC",
+  "states": [],
+  "track_changes": 1
+}

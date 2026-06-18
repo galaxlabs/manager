@@ -1,0 +1,103 @@
+{
+  "actions": [],
+  "allow_rename": 1,
+  "creation": "2026-06-17 15:39:28.140419",
+  "doctype": "DocType",
+  "editable_grid": 1,
+  "engine": "InnoDB",
+  "field_order": [
+    "title",
+    "bank_account",
+    "date",
+    "ending_balance",
+    "statement_balance",
+    "difference",
+    "status"
+  ],
+  "fields": [
+    {
+      "fieldname": "division",
+      "fieldtype": "Link",
+      "label": "Division",
+      "options": "Division"
+    },
+    {
+      "fieldname": "business",
+      "fieldtype": "Link",
+      "options": "Business",
+      "label": "Business",
+      "in_standard_filter": 1
+    },
+    {
+      "fieldname": "title",
+      "fieldtype": "Data",
+      "in_list_view": 1,
+      "label": "Title",
+      "reqd": 1
+    },
+    {
+      "fieldname": "bank_account",
+      "fieldtype": "Link",
+      "in_list_view": 1,
+      "label": "Bank Account",
+      "options": "Account",
+      "reqd": 1
+    },
+    {
+      "fieldname": "date",
+      "fieldtype": "Date",
+      "in_list_view": 1,
+      "label": "Date",
+      "reqd": 1
+    },
+    {
+      "fieldname": "ending_balance",
+      "fieldtype": "Currency",
+      "label": "Ending Balance"
+    },
+    {
+      "fieldname": "statement_balance",
+      "fieldtype": "Currency",
+      "label": "Statement Balance"
+    },
+    {
+      "fieldname": "difference",
+      "fieldtype": "Currency",
+      "label": "Difference"
+    },
+    {
+      "default": "Draft",
+      "fieldname": "status",
+      "fieldtype": "Select",
+      "label": "Status",
+      "options": "Draft\nReconciled\nUnreconciled"
+    }
+  ],
+  "grid_page_length": 50,
+  "index_web_pages_for_search": 1,
+  "links": [],
+  "modified": "2026-06-17 15:39:28.140419",
+  "modified_by": "Administrator",
+  "module": "Banking",
+  "name": "Bank Reconciliation",
+  "owner": "Administrator",
+  "permissions": [
+    {
+      "create": 1,
+      "delete": 1,
+      "email": 1,
+      "export": 1,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "System Manager",
+      "share": 1,
+      "write": 1
+    }
+  ],
+  "row_format": "Dynamic",
+  "rows_threshold_for_grid_search": 20,
+  "sort_field": "modified",
+  "sort_order": "DESC",
+  "states": []
+}

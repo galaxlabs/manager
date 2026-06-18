@@ -1,0 +1,36 @@
+{
+  "charts": [],
+  "content": "[{\"id\": \"summary-h\", \"type\": \"header\", \"data\": {\"text\": \"<span class=h4><b>Summary</b></span>\", \"col\": 12}}, {\"id\": \"summary-ws\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Dashboard\", \"url\": \"/app/workspace/manager\", \"icon\": \"fa fa-presentation\", \"format\": \"Not Set\", \"color\": \"Blue\", \"col\": 3, \"label\": \"Dashboard\"}}, {\"id\": \"banking-h\", \"type\": \"header\", \"data\": {\"text\": \"<span class=h4><b>Banking</b></span>\", \"col\": 12}}, {\"id\": \"banking-a\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Accounts\", \"link_to\": \"Account\", \"doc_view\": \"List\", \"type\": \"DocType\", \"icon\": \"fa fa-money-check-edit\", \"format\": \"Not Set\", \"color\": \"Green\", \"col\": 3, \"label\": \"Accounts\"}}, {\"id\": \"banking-r\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Receipts\", \"link_to\": \"Receipt\", \"doc_view\": \"List\", \"type\": \"DocType\", \"icon\": \"fa fa-arrow-alt-to-right\", \"format\": \"Not Set\", \"color\": \"Green\", \"col\": 3, \"label\": \"Receipts\"}}, {\"id\": \"banking-p\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Payments\", \"link_to\": \"Payment\", \"doc_view\": \"List\", \"type\": \"DocType\", \"icon\": \"fa fa-arrow-alt-to-right\", \"format\": \"Not Set\", \"color\": \"Green\", \"col\": 3, \"label\": \"Payments\"}}, {\"id\": \"banking-t\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Transfers\", \"link_to\": \"Account Transfer\", \"doc_view\": \"List\", \"type\": \"DocType\", \"icon\": \"fa fa-exchange\", \"format\": \"Not Set\", \"color\": \"Green\", \"col\": 3, \"label\": \"Transfers\"}}, {\"id\": \"sales-h\", \"type\": \"header\", \"data\": {\"text\": \"<span class=h4><b>Sales</b></span>\", \"col\": 12}}, {\"id\": \"sales-c\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Customers\", \"link_to\": \"Customer\", \"doc_view\": \"List\", \"type\": \"DocType\", \"icon\": \"fa fa-people-group\", \"format\": \"Not Set\", \"color\": \"Blue\", \"col\": 3, \"label\": \"Customers\"}}, {\"id\": \"sales-so\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Sales Orders\", \"link_to\": \"Sales Order\", \"doc_view\": \"List\", \"type\": \"DocType\", \"icon\": \"fa fa-shopping-cart\", \"format\": \"Not Set\", \"color\": \"Blue\", \"col\": 3, \"label\": \"Orders\"}}, {\"id\": \"sales-si\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Sales Invoices\", \"link_to\": \"Sales Invoice\", \"doc_view\": \"List\", \"type\": \"DocType\", \"icon\": \"fa fa-file-invoice\", \"format\": \"Not Set\", \"color\": \"Blue\", \"col\": 3, \"label\": \"Invoices\"}}, {\"id\": \"sales-dn\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Delivery Notes\", \"link_to\": \"Delivery Note\", \"doc_view\": \"List\", \"type\": \"DocType\", \"icon\": \"fa fa-truck\", \"format\": \"Not Set\", \"color\": \"Blue\", \"col\": 3, \"label\": \"Delivery\"}}, {\"id\": \"purchases-h\", \"type\": \"header\", \"data\": {\"text\": \"<span class=h4><b>Purchases</b></span>\", \"col\": 12}}, {\"id\": \"purchases-s\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Suppliers\", \"link_to\": \"Supplier\", \"doc_view\": \"List\", \"type\": \"DocType\", \"icon\": \"fa fa-people-group\", \"format\": \"Not Set\", \"color\": \"Orange\", \"col\": 3, \"label\": \"Suppliers\"}}, {\"id\": \"purchases-po\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Purchase Orders\", \"link_to\": \"Purchase Order\", \"doc_view\": \"List\", \"type\": \"DocType\", \"icon\": \"fa fa-shopping-basket\", \"format\": \"Not Set\", \"color\": \"Orange\", \"col\": 3, \"label\": \"Orders\"}}, {\"id\": \"purchases-pi\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Purchase Invoices\", \"link_to\": \"Purchase Invoice\", \"doc_view\": \"List\", \"type\": \"DocType\", \"icon\": \"fa fa-file-invoice\", \"format\": \"Not Set\", \"color\": \"Orange\", \"col\": 3, \"label\": \"Invoices\"}}, {\"id\": \"inventory-h\", \"type\": \"header\", \"data\": {\"text\": \"<span class=h4><b>Inventory</b></span>\", \"col\": 12}}, {\"id\": \"inventory-i\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Items\", \"link_to\": \"Item\", \"doc_view\": \"List\", \"type\": \"DocType\", \"icon\": \"fa fa-inventory\", \"format\": \"Not Set\", \"color\": \"Teal\", \"col\": 3, \"label\": \"Items\"}}, {\"id\": \"payroll-h\", \"type\": \"header\", \"data\": {\"text\": \"<span class=h4><b>Payroll</b></span>\", \"col\": 12}}, {\"id\": \"payroll-e\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Employees\", \"link_to\": \"Employee\", \"doc_view\": \"List\", \"type\": \"DocType\", \"icon\": \"fa fa-id-card\", \"format\": \"Not Set\", \"color\": \"Purple\", \"col\": 3, \"label\": \"Employees\"}}, {\"id\": \"assets-h\", \"type\": \"header\", \"data\": {\"text\": \"<span class=h4><b>Fixed Assets</b></span>\", \"col\": 12}}, {\"id\": \"assets-fa\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Fixed Assets\", \"link_to\": \"Fixed Asset\", \"doc_view\": \"List\", \"type\": \"DocType\", \"icon\": \"fa fa-car-building\", \"format\": \"Not Set\", \"color\": \"Red\", \"col\": 3, \"label\": \"Fixed Assets\"}}, {\"id\": \"accounting-h\", \"type\": \"header\", \"data\": {\"text\": \"<span class=h4><b>Accounting</b></span>\", \"col\": 12}}, {\"id\": \"accounting-je\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Journal Entries\", \"link_to\": \"Journal Entry\", \"doc_view\": \"List\", \"type\": \"DocType\", \"icon\": \"fa fa-mask\", \"format\": \"Not Set\", \"color\": \"Pink\", \"col\": 3, \"label\": \"Journal Entries\"}}, {\"id\": \"reports-h\", \"type\": \"header\", \"data\": {\"text\": \"<span class=h4><b>Reports</b></span>\", \"col\": 12}}, {\"id\": \"reports-pl\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Profit & Loss\", \"url\": \"#\", \"icon\": \"fa fa-presentation\", \"format\": \"Not Set\", \"color\": \"Cyan\", \"col\": 3, \"label\": \"P&L\"}}, {\"id\": \"reports-bs\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Balance Sheet\", \"url\": \"#\", \"icon\": \"fa fa-balance-scale\", \"format\": \"Not Set\", \"color\": \"Cyan\", \"col\": 3, \"label\": \"Balance Sheet\"}}, {\"id\": \"reports-tb\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Trial Balance\", \"url\": \"#\", \"icon\": \"fa fa-file-invoice\", \"format\": \"Not Set\", \"color\": \"Cyan\", \"col\": 3, \"label\": \"Trial Balance\"}}]",
+  "creation": "2026-06-17 12:43:36.804628",
+  "custom_blocks": [],
+  "docstatus": 0,
+  "doctype": "Workspace",
+  "hide_custom": 0,
+  "icon": "fa fa-building",
+  "idx": 0,
+  "indicator_color": "blue",
+  "is_hidden": 0,
+  "label": "Manager",
+  "links": [],
+  "modified": "2026-06-17 12:43:36.804628",
+  "modified_by": "Administrator",
+  "module": "Manager",
+  "name": "Manager",
+  "number_cards": [],
+  "owner": "Administrator",
+  "public": 1,
+  "quick_lists": [],
+  "roles": [],
+  "sequence_id": 0.0,
+  "shortcuts": [],
+  "title": "Manager",
+  "fields": [
+    {
+      "fieldname": "business",
+      "fieldtype": "Link",
+      "options": "Business",
+      "label": "Business",
+      "in_standard_filter": 1
+    }
+  ]
+}

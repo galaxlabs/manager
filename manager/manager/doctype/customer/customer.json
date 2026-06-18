@@ -1,0 +1,93 @@
+{
+  "actions": [],
+  "allow_rename": 1,
+  "autoname": "field:customer_code",
+  "creation": "2026-06-17 12:46:51.695209",
+  "doctype": "DocType",
+  "editable_grid": 1,
+  "engine": "InnoDB",
+  "field_order": [
+    "customer_code",
+    "customer_name",
+    "billing_address",
+    "accounts_receivable",
+    "status",
+    "sales_executive",
+    "phone",
+    "email"
+  ],
+  "fields": [
+    {
+      "fieldname": "business",
+      "fieldtype": "Link",
+      "options": "Business",
+      "label": "Business",
+      "in_standard_filter": 1
+    },
+    {
+      "fieldname": "customer_code",
+      "fieldtype": "Data",
+      "in_list_view": 1,
+      "label": "Code",
+      "reqd": 1,
+      "unique": 1
+    },
+    {
+      "fieldname": "customer_name",
+      "fieldtype": "Data",
+      "in_list_view": 1,
+      "label": "Name",
+      "reqd": 1
+    },
+    {
+      "fieldname": "billing_address",
+      "fieldtype": "Small Text",
+      "label": "Billing Address"
+    },
+    {
+      "default": "0",
+      "fieldname": "accounts_receivable",
+      "fieldtype": "Currency",
+      "label": "Accounts Receivable",
+      "read_only": 1
+    },
+    {
+      "default": "Active",
+      "fieldname": "status",
+      "fieldtype": "Select",
+      "label": "Status",
+      "options": "Active\nInactive\nSuspended"
+    },
+    {
+      "fieldname": "sales_executive",
+      "fieldtype": "Link",
+      "label": "Sales Executive",
+      "options": "Employee"
+    },
+    {
+      "fieldname": "phone",
+      "fieldtype": "Data",
+      "label": "Phone"
+    },
+    {
+      "fieldname": "email",
+      "fieldtype": "Data",
+      "label": "Email"
+    }
+  ],
+  "grid_page_length": 50,
+  "index_web_pages_for_search": 1,
+  "links": [],
+  "modified": "2026-06-17 12:46:51.695209",
+  "modified_by": "Administrator",
+  "module": "Sales",
+  "name": "Customer",
+  "owner": "Administrator",
+  "permissions": [],
+  "row_format": "Dynamic",
+  "rows_threshold_for_grid_search": 20,
+  "sort_field": "modified",
+  "sort_order": "DESC",
+  "states": [],
+  "track_changes": 1
+}

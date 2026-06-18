@@ -1,0 +1,36 @@
+{
+  "charts": [],
+  "content": "[{\"type\": \"header\", \"data\": {\"text\": \"<span class=h4><b>Inventory</b></span>\", \"col\": 12}}, {\"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Items\", \"link_to\": \"Item\", \"doc_view\": \"List\", \"type\": \"DocType\", \"icon\": \"fa fa-cube\", \"format\": \"Not Set\", \"color\": \"Teal\", \"col\": 3, \"label\": \"Items\"}, \"id\": \"item\"}]",
+  "creation": "2026-06-17 14:06:03.220884",
+  "custom_blocks": [],
+  "docstatus": 0,
+  "doctype": "Workspace",
+  "hide_custom": 0,
+  "icon": "fa fa-warehouse",
+  "idx": 0,
+  "indicator_color": "green",
+  "is_hidden": 0,
+  "label": "Inventory",
+  "links": [],
+  "modified": "2026-06-17 14:06:03.220884",
+  "modified_by": "Administrator",
+  "module": "Inventory",
+  "name": "Inventory",
+  "number_cards": [],
+  "owner": "Administrator",
+  "public": 1,
+  "quick_lists": [],
+  "roles": [],
+  "sequence_id": 0.0,
+  "shortcuts": [],
+  "title": "Inventory",
+  "fields": [
+    {
+      "fieldname": "business",
+      "fieldtype": "Link",
+      "options": "Business",
+      "label": "Business",
+      "in_standard_filter": 1
+    }
+  ]
+}

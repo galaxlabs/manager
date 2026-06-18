@@ -1,0 +1,137 @@
+{
+  "actions": [],
+  "allow_rename": 1,
+  "autoname": "naming_series:",
+  "creation": "2026-06-17 12:46:52.397823",
+  "doctype": "DocType",
+  "editable_grid": 1,
+  "engine": "InnoDB",
+  "field_order": [
+    "naming_series",
+    "date",
+    "reference",
+    "paid_from",
+    "description",
+    "payee",
+    "amount",
+    "amended_from"
+  ],
+  "fields": [
+    {
+      "fieldname": "currency",
+      "fieldtype": "Select",
+      "label": "Currency",
+      "options": "USD\nEUR\nGBP\nPKR\nINR\nAED\nSAR\nQAR\nOMR\nBHD\nKWD\nMYR\nSGD\nNZD\nAUD\nZAR\nNGN\nEGP\nJOD\nMUR\nGHS",
+      "default": "USD",
+      "in_list_view": 1,
+      "in_standard_filter": 1
+    },
+    {
+      "fieldname": "exchange_rate",
+      "fieldtype": "Float",
+      "label": "Exchange Rate",
+      "description": "Rate: 1 base currency = X this currency",
+      "default": 1.0
+    },
+    {
+      "fieldname": "division",
+      "fieldtype": "Link",
+      "label": "Division",
+      "options": "Division"
+    },
+    {
+      "fieldname": "business",
+      "fieldtype": "Link",
+      "options": "Business",
+      "label": "Business",
+      "in_standard_filter": 1
+    },
+    {
+      "default": "PAY-",
+      "fieldname": "naming_series",
+      "fieldtype": "Select",
+      "hidden": 1,
+      "label": "Series",
+      "options": "PAY-\nPAYMT-"
+    },
+    {
+      "default": "Today",
+      "fieldname": "date",
+      "fieldtype": "Date",
+      "in_list_view": 1,
+      "label": "Date",
+      "reqd": 1
+    },
+    {
+      "fieldname": "reference",
+      "fieldtype": "Data",
+      "label": "Reference"
+    },
+    {
+      "fieldname": "paid_from",
+      "fieldtype": "Link",
+      "in_list_view": 1,
+      "label": "Paid From",
+      "options": "Account",
+      "reqd": 0
+    },
+    {
+      "fieldname": "description",
+      "fieldtype": "Small Text",
+      "label": "Description"
+    },
+    {
+      "fieldname": "payee",
+      "fieldtype": "Data",
+      "in_list_view": 1,
+      "label": "Payee",
+      "reqd": 0
+    },
+    {
+      "fieldname": "amount",
+      "fieldtype": "Currency",
+      "in_list_view": 1,
+      "label": "Amount",
+      "reqd": 1
+    },
+    {
+      "fieldname": "amended_from",
+      "fieldtype": "Link",
+      "label": "Amended From",
+      "no_copy": 1,
+      "options": "Payment",
+      "print_hide": 1,
+      "read_only": 1,
+      "search_index": 1
+    },
+    {
+      "fieldname": "status",
+      "fieldtype": "Select",
+      "options": "Draft\nSubmitted\nCancelled",
+      "label": "Status",
+      "allow_on_submit": true,
+      "reqd": false
+    },
+    {
+      "fieldname": "custom_fields_json",
+      "fieldtype": "JSON",
+      "label": "Custom Fields"
+    }
+  ],
+  "grid_page_length": 50,
+  "index_web_pages_for_search": 1,
+  "is_submittable": 1,
+  "links": [],
+  "modified": "2026-06-17 12:46:52.397823",
+  "modified_by": "Administrator",
+  "module": "Banking",
+  "name": "Payment",
+  "owner": "Administrator",
+  "permissions": [],
+  "row_format": "Dynamic",
+  "rows_threshold_for_grid_search": 20,
+  "sort_field": "modified",
+  "sort_order": "DESC",
+  "states": [],
+  "track_changes": 1
+}

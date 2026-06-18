@@ -1,0 +1,97 @@
+{
+  "actions": [],
+  "allow_rename": 1,
+  "creation": "2026-06-17 12:45:41.286519",
+  "doctype": "DocType",
+  "editable_grid": 1,
+  "engine": "InnoDB",
+  "field_order": [
+    "employee_name",
+    "balance",
+    "status",
+    "phone",
+    "email",
+    "salary",
+    "address"
+  ],
+  "fields": [
+    {
+      "fieldname": "business",
+      "fieldtype": "Link",
+      "options": "Business",
+      "label": "Business",
+      "in_standard_filter": 1
+    },
+    {
+      "fieldname": "employee_name",
+      "fieldtype": "Data",
+      "in_list_view": 1,
+      "label": "Name",
+      "reqd": 1
+    },
+    {
+      "default": "0",
+      "fieldname": "balance",
+      "fieldtype": "Currency",
+      "label": "Balance",
+      "read_only": 1
+    },
+    {
+      "default": "Active",
+      "fieldname": "status",
+      "fieldtype": "Select",
+      "label": "Status",
+      "options": "Active\nInactive\nTerminated"
+    },
+    {
+      "fieldname": "phone",
+      "fieldtype": "Data",
+      "label": "Phone"
+    },
+    {
+      "fieldname": "email",
+      "fieldtype": "Data",
+      "label": "Email"
+    },
+    {
+      "fieldname": "salary",
+      "fieldtype": "Currency",
+      "label": "Salary"
+    },
+    {
+      "fieldname": "address",
+      "fieldtype": "Small Text",
+      "label": "Address"
+    },
+    {
+      "fieldname": "basic_salary",
+      "fieldtype": "Currency",
+      "label": "Basic Salary"
+    },
+    {
+      "fieldname": "allowances",
+      "fieldtype": "JSON",
+      "label": "Allowances (JSON)"
+    },
+    {
+      "fieldname": "deductions_json",
+      "fieldtype": "JSON",
+      "label": "Deductions (JSON)"
+    }
+  ],
+  "grid_page_length": 50,
+  "index_web_pages_for_search": 1,
+  "links": [],
+  "modified": "2026-06-17 12:45:41.286519",
+  "modified_by": "Administrator",
+  "module": "Payroll",
+  "name": "Employee",
+  "owner": "Administrator",
+  "permissions": [],
+  "row_format": "Dynamic",
+  "rows_threshold_for_grid_search": 20,
+  "sort_field": "modified",
+  "sort_order": "DESC",
+  "states": [],
+  "track_changes": 1
+}

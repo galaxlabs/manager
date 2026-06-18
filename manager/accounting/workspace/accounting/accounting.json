@@ -1,0 +1,36 @@
+{
+  "charts": [],
+  "content": "[{\"type\": \"header\", \"data\": {\"text\": \"<span class=h4><b>Accounting</b></span>\", \"col\": 12}}, {\"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Journal Entries\", \"link_to\": \"Journal Entry\", \"doc_view\": \"List\", \"type\": \"DocType\", \"icon\": \"fa fa-book\", \"format\": \"Not Set\", \"color\": \"Pink\", \"col\": 3, \"label\": \"Journal Entries\"}, \"id\": \"journal-entry\"}, {\"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Manager Settings\", \"link_to\": \"Manager Settings\", \"doc_view\": \"List\", \"type\": \"DocType\", \"icon\": \"fa fa-cog\", \"format\": \"Not Set\", \"color\": \"Gray\", \"col\": 3, \"label\": \"Settings\"}, \"id\": \"manager-settings\"}]",
+  "creation": "2026-06-17 14:06:03.251972",
+  "custom_blocks": [],
+  "docstatus": 0,
+  "doctype": "Workspace",
+  "hide_custom": 0,
+  "icon": "fa fa-calculator",
+  "idx": 0,
+  "indicator_color": "green",
+  "is_hidden": 0,
+  "label": "Accounting",
+  "links": [],
+  "modified": "2026-06-17 14:06:03.251972",
+  "modified_by": "Administrator",
+  "module": "Accounting",
+  "name": "Accounting",
+  "number_cards": [],
+  "owner": "Administrator",
+  "public": 1,
+  "quick_lists": [],
+  "roles": [],
+  "sequence_id": 0.0,
+  "shortcuts": [],
+  "title": "Accounting",
+  "fields": [
+    {
+      "fieldname": "business",
+      "fieldtype": "Link",
+      "options": "Business",
+      "label": "Business",
+      "in_standard_filter": 1
+    }
+  ]
+}

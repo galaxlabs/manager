@@ -1,0 +1,101 @@
+{
+  "actions": [],
+  "allow_rename": 1,
+  "autoname": "field:supplier_code",
+  "creation": "2026-06-17 12:45:40.390931",
+  "doctype": "DocType",
+  "editable_grid": 1,
+  "engine": "InnoDB",
+  "field_order": [
+    "supplier_code",
+    "supplier_name",
+    "accounts_payable",
+    "status",
+    "phone",
+    "email",
+    "address"
+  ],
+  "fields": [
+    {
+      "fieldname": "business",
+      "fieldtype": "Link",
+      "options": "Business",
+      "label": "Business",
+      "in_standard_filter": 1
+    },
+    {
+      "fieldname": "supplier_code",
+      "fieldtype": "Data",
+      "in_list_view": 1,
+      "label": "Code",
+      "reqd": 1,
+      "unique": 1
+    },
+    {
+      "fieldname": "supplier_name",
+      "fieldtype": "Data",
+      "in_list_view": 1,
+      "label": "Name",
+      "reqd": 1
+    },
+    {
+      "default": "0",
+      "fieldname": "accounts_payable",
+      "fieldtype": "Currency",
+      "label": "Accounts Payable",
+      "read_only": 1
+    },
+    {
+      "default": "Active",
+      "fieldname": "status",
+      "fieldtype": "Select",
+      "label": "Status",
+      "options": "Active\nInactive\nSuspended"
+    },
+    {
+      "fieldname": "phone",
+      "fieldtype": "Data",
+      "label": "Phone"
+    },
+    {
+      "fieldname": "email",
+      "fieldtype": "Data",
+      "label": "Email"
+    },
+    {
+      "fieldname": "address",
+      "fieldtype": "Small Text",
+      "label": "Address"
+    },
+    {
+      "fieldname": "image",
+      "fieldtype": "Attach Image",
+      "label": "Image"
+    },
+    {
+      "fieldname": "inactive",
+      "fieldtype": "Check",
+      "label": "Inactive"
+    },
+    {
+      "fieldname": "custom_fields_json",
+      "fieldtype": "JSON",
+      "label": "Custom Fields"
+    }
+  ],
+  "grid_page_length": 50,
+  "index_web_pages_for_search": 1,
+  "links": [],
+  "modified": "2026-06-17 12:45:40.390931",
+  "modified_by": "Administrator",
+  "module": "Purchases",
+  "name": "Supplier",
+  "owner": "Administrator",
+  "permissions": [],
+  "row_format": "Dynamic",
+  "rows_threshold_for_grid_search": 20,
+  "sort_field": "modified",
+  "sort_order": "DESC",
+  "states": [],
+  "track_changes": 1
+}

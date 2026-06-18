@@ -1,0 +1,122 @@
+{
+  "actions": [],
+  "allow_rename": 1,
+  "creation": "2026-06-17 15:39:48.675267",
+  "doctype": "DocType",
+  "editable_grid": 1,
+  "engine": "InnoDB",
+  "field_order": [
+    "title",
+    "fixed_asset",
+    "date",
+    "amount",
+    "accumulated_depreciation_account",
+    "depreciation_expense_account",
+    "status",
+    "amended_from"
+  ],
+  "fields": [
+    {
+      "fieldname": "division",
+      "fieldtype": "Link",
+      "label": "Division",
+      "options": "Division"
+    },
+    {
+      "fieldname": "business",
+      "fieldtype": "Link",
+      "options": "Business",
+      "label": "Business",
+      "in_standard_filter": 1
+    },
+    {
+      "fieldname": "title",
+      "fieldtype": "Data",
+      "in_list_view": 1,
+      "label": "Title",
+      "reqd": 1
+    },
+    {
+      "fieldname": "fixed_asset",
+      "fieldtype": "Link",
+      "in_list_view": 1,
+      "label": "Fixed Asset",
+      "options": "Fixed Asset",
+      "reqd": 1
+    },
+    {
+      "fieldname": "date",
+      "fieldtype": "Date",
+      "in_list_view": 1,
+      "label": "Date",
+      "reqd": 1
+    },
+    {
+      "fieldname": "amount",
+      "fieldtype": "Currency",
+      "in_list_view": 1,
+      "label": "Amount",
+      "reqd": 1
+    },
+    {
+      "fieldname": "accumulated_depreciation_account",
+      "fieldtype": "Link",
+      "label": "Accum. Deprec. Account",
+      "options": "Account"
+    },
+    {
+      "fieldname": "depreciation_expense_account",
+      "fieldtype": "Link",
+      "label": "Deprec. Expense Account",
+      "options": "Account"
+    },
+    {
+      "default": "Draft",
+      "fieldname": "status",
+      "fieldtype": "Select",
+      "label": "Status",
+      "options": "Draft\nSubmitted\nCancelled"
+    },
+    {
+      "fieldname": "amended_from",
+      "fieldtype": "Link",
+      "label": "Amended From",
+      "no_copy": 1,
+      "options": "Depreciation Entry",
+      "print_hide": 1,
+      "read_only": 1,
+      "search_index": 1
+    }
+  ],
+  "grid_page_length": 50,
+  "index_web_pages_for_search": 1,
+  "is_submittable": 1,
+  "links": [],
+  "modified": "2026-06-17 15:39:48.675267",
+  "modified_by": "Administrator",
+  "module": "FixedAssets",
+  "name": "Depreciation Entry",
+  "owner": "Administrator",
+  "permissions": [
+    {
+      "amend": 1,
+      "cancel": 1,
+      "create": 1,
+      "delete": 1,
+      "email": 1,
+      "export": 1,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "System Manager",
+      "share": 1,
+      "submit": 1,
+      "write": 1
+    }
+  ],
+  "row_format": "Dynamic",
+  "rows_threshold_for_grid_search": 20,
+  "sort_field": "modified",
+  "sort_order": "DESC",
+  "states": []
+}

@@ -1,0 +1,36 @@
+{
+  "charts": [],
+  "content": "[{\"type\": \"header\", \"data\": {\"text\": \"<span class=h4><b>Banking</b></span>\", \"col\": 12}}, {\"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Chart of Accounts\", \"link_to\": \"Account\", \"doc_view\": \"List\", \"type\": \"DocType\", \"icon\": \"fa fa-book\", \"format\": \"Not Set\", \"color\": \"Green\", \"col\": 3, \"label\": \"Accounts\"}, \"id\": \"account\"}, {\"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Receipts\", \"link_to\": \"Receipt\", \"doc_view\": \"List\", \"type\": \"DocType\", \"icon\": \"fa fa-arrow-right\", \"format\": \"Not Set\", \"color\": \"Green\", \"col\": 3, \"label\": \"Receipts\"}, \"id\": \"receipt\"}, {\"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Payments\", \"link_to\": \"Payment\", \"doc_view\": \"List\", \"type\": \"DocType\", \"icon\": \"fa fa-arrow-left\", \"format\": \"Not Set\", \"color\": \"Green\", \"col\": 3, \"label\": \"Payments\"}, \"id\": \"payment\"}, {\"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Account Transfers\", \"link_to\": \"Account Transfer\", \"doc_view\": \"List\", \"type\": \"DocType\", \"icon\": \"fa fa-exchange\", \"format\": \"Not Set\", \"color\": \"Green\", \"col\": 3, \"label\": \"Transfers\"}, \"id\": \"account-transfer\"}]",
+  "creation": "2026-06-17 14:06:03.187888",
+  "custom_blocks": [],
+  "docstatus": 0,
+  "doctype": "Workspace",
+  "hide_custom": 0,
+  "icon": "fa fa-money-check",
+  "idx": 0,
+  "indicator_color": "green",
+  "is_hidden": 0,
+  "label": "Banking",
+  "links": [],
+  "modified": "2026-06-17 14:06:03.187888",
+  "modified_by": "Administrator",
+  "module": "Banking",
+  "name": "Banking",
+  "number_cards": [],
+  "owner": "Administrator",
+  "public": 1,
+  "quick_lists": [],
+  "roles": [],
+  "sequence_id": 0.0,
+  "shortcuts": [],
+  "title": "Banking",
+  "fields": [
+    {
+      "fieldname": "business",
+      "fieldtype": "Link",
+      "options": "Business",
+      "label": "Business",
+      "in_standard_filter": 1
+    }
+  ]
+}

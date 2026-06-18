@@ -1,0 +1,62 @@
+{
+  "doctype": "DocType",
+  "name": "Tax Code",
+  "module": "Accounting",
+  "custom": 0,
+  "is_submittable": 0,
+  "is_child_table": 0,
+  "istable": 0,
+  "is_single": 0,
+  "editable_grid": 1,
+  "track_changes": 1,
+  "autoname": "field:tax_code",
+  "fields": [
+    {
+      "fieldname": "business",
+      "fieldtype": "Link",
+      "options": "Business",
+      "label": "Business",
+      "in_standard_filter": 1
+    },
+    {
+      "fieldname": "tax_code",
+      "fieldtype": "Data",
+      "label": "Tax Code",
+      "reqd": 1,
+      "unique": 1
+    },
+    {
+      "fieldname": "tax_name",
+      "fieldtype": "Data",
+      "label": "Tax Name",
+      "reqd": 1
+    },
+    {
+      "fieldname": "rate",
+      "fieldtype": "Currency",
+      "label": "Rate (%)",
+      "reqd": 1
+    },
+    {
+      "fieldname": "tax_type",
+      "fieldtype": "Select",
+      "label": "Type",
+      "options": "Sales Tax\nVAT\nGST\nWithholding Tax\nOther",
+      "reqd": 1
+    },
+    {
+      "fieldname": "is_active",
+      "fieldtype": "Check",
+      "label": "Active"
+    }
+  ],
+  "permissions": [
+    {
+      "role": "System Manager",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 1
+    }
+  ]
+}

@@ -1,0 +1,309 @@
+/* Manager.io Theme - Frappe Clone */
+/* Base Colors from Manager.io v26 */
+:root {
+  --manager-bg: oklch(0.922 0 0);
+  --manager-foreground: oklch(0.371 0 0);
+  --manager-card: #ffffff;
+  --manager-card-foreground: oklch(0.205 0 0);
+  --manager-muted: oklch(0.97 0 0);
+  --manager-muted-foreground: oklch(0.439 0 0);
+  --manager-border: oklch(0.87 0 0);
+  --manager-input: #ffffff;
+  --manager-input-border: oklch(0.922 0 0);
+  --manager-primary: oklch(0.5 0.134 242.749);
+  --manager-primary-foreground: #ffffff;
+  --manager-accent: color-mix(in oklab, oklch(0.987 0.026 102.212), #fff);
+  --manager-danger: oklch(0.637 0.237 25.331);
+  --manager-success: oklch(0.723 0.219 149.579);
+  --manager-radius: 0.5rem;
+  --manager-font: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+body {
+  background-color: var(--manager-bg);
+  color: var(--manager-foreground);
+  font-family: var(--manager-font);
+  font-size: 14px;
+}
+
+/* Sidebar - Manager.io muted sidebar style */
+.layout-side-section {
+  background-color: var(--manager-muted);
+  border-right: 1px solid var(--manager-border);
+}
+
+.layout-side-section .sidebar-menu {
+  font-size: 14px;
+}
+
+.layout-side-section .sidebar-menu a {
+  color: var(--manager-foreground);
+  font-weight: 500;
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--manager-border);
+}
+
+.layout-side-section .sidebar-menu a:hover {
+  background-color: var(--manager-card);
+  opacity: 0.75;
+}
+
+/* Cards - Manager.io card style */
+.widget, .frappe-card, .panel {
+  background-color: var(--manager-card);
+  border: 1px solid var(--manager-border);
+  border-radius: var(--manager-radius);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+
+.widget-header, .card-header, .panel-heading {
+  background-color: transparent;
+  border-bottom: 1px solid var(--manager-border);
+  font-weight: 600;
+  padding: 12px 16px;
+}
+
+/* Buttons - Manager.io style */
+.btn {
+  font-family: var(--manager-font);
+  font-size: 14px;
+  border-radius: var(--manager-radius);
+  padding: 6px 12px;
+  border: 1px solid var(--manager-border);
+  background-color: var(--manager-card);
+  color: var(--manager-foreground);
+}
+
+.btn-primary {
+  background-color: var(--manager-primary);
+  border-color: var(--manager-primary);
+  color: var(--manager-primary-foreground);
+}
+
+.btn-primary:hover {
+  opacity: 0.9;
+}
+
+.btn-danger {
+  background-color: var(--manager-danger);
+  border-color: var(--manager-danger);
+  color: white;
+}
+
+.btn-xs {
+  font-size: 12px;
+  padding: 2px 8px;
+}
+
+.btn-sm {
+  font-size: 13px;
+  padding: 4px 10px;
+}
+
+/* Tables - Manager.io clean table style */
+table, .frappe-list {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+table th, .frappe-list .list-row-head {
+  background-color: var(--manager-muted);
+  border-bottom: 1px solid var(--manager-border);
+  font-weight: 600;
+  color: var(--manager-muted-foreground);
+  font-size: 13px;
+  text-transform: none;
+  padding: 8px 12px;
+}
+
+table td, .frappe-list .list-row {
+  border-bottom: 1px solid var(--manager-border);
+  padding: 8px 12px;
+  vertical-align: middle;
+}
+
+/* Form controls - Manager.io clean input style */
+input, select, textarea, .frappe-control .input-group {
+  background-color: var(--manager-input);
+  border: 1px solid var(--manager-input-border);
+  border-radius: var(--manager-radius);
+  padding: 8px 12px;
+  font-family: var(--manager-font);
+  font-size: 14px;
+  color: var(--manager-card-foreground);
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: var(--manager-primary);
+  box-shadow: 0 0 0 2px rgba(43, 108, 176, 0.15);
+}
+
+/* Labels and headings */
+label, .control-label {
+  font-weight: 500;
+  color: var(--manager-foreground);
+  font-size: 13px;
+  margin-bottom: 4px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--manager-card-foreground);
+  font-family: var(--manager-font);
+}
+
+/* Page header */
+.page-head, .page-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--manager-card-foreground);
+  padding: 16px 24px;
+}
+
+/* Badges and status indicators */
+.indicator, .badge {
+  font-size: 12px;
+  font-weight: 500;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+/* Navigation bar */
+.navbar {
+  background-color: var(--manager-card);
+  border-bottom: 1px solid var(--manager-border);
+}
+
+/* Links */
+a {
+  color: var(--manager-primary);
+}
+
+a:hover {
+  opacity: 0.75;
+}
+
+/* Modal */
+.modal-content {
+  background-color: var(--manager-card);
+  border: 1px solid var(--manager-border);
+  border-radius: var(--manager-radius);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.modal-header {
+  border-bottom: 1px solid var(--manager-border);
+  padding: 16px;
+}
+
+.modal-footer {
+  border-top: 1px solid var(--manager-border);
+  padding: 12px 16px;
+}
+
+/* Dropdown */
+.dropdown-menu {
+  background-color: var(--manager-card);
+  border: 1px solid var(--manager-border);
+  border-radius: var(--manager-radius);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.dropdown-item {
+  padding: 8px 16px;
+  font-size: 14px;
+}
+
+.dropdown-item:hover {
+  background-color: var(--manager-muted);
+}
+
+/* Alerts */
+.alert {
+  border-radius: var(--manager-radius);
+  border: 1px solid transparent;
+}
+
+/* Page content area */
+.page-container {
+  padding: 24px;
+  max-width: 1200px;
+}
+
+/* Frappe specific overrides */
+.page-form {
+  background-color: var(--manager-card);
+  border: 1px solid var(--manager-border);
+  border-radius: var(--manager-radius);
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+.list-container {
+  background-color: var(--manager-card);
+  border: 1px solid var(--manager-border);
+  border-radius: var(--manager-radius);
+}
+
+/* Section divider in forms */
+.section-head {
+  background-color: var(--manager-muted);
+  border-bottom: 1px solid var(--manager-border);
+  padding: 8px 12px;
+  font-weight: 600;
+}
+
+/* Tab buttons */
+.form-tabs .nav-link {
+  border: none;
+  color: var(--manager-muted-foreground);
+  font-weight: 500;
+}
+
+.form-tabs .nav-link.active {
+  color: var(--manager-primary);
+  border-bottom: 2px solid var(--manager-primary);
+  background: transparent;
+}
+
+/* Manager.io sidebar navigation pattern */
+.manager-nav-item {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 600;
+  padding: 8px 12px;
+  gap: 16px;
+  border-right: 1px solid var(--manager-border);
+  border-bottom: 1px solid var(--manager-border);
+  background-color: var(--manager-muted);
+}
+
+.manager-nav-item.active {
+  background-color: var(--manager-card);
+  border-right: 1px solid var(--manager-card);
+}
+
+/* Font Awesome integration for Manager.io icons */
+.fa-fw {
+  width: 1.25em;
+  text-align: center;
+}
+
+/* Card-based section layout like Manager.io */
+.manager-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 16px;
+}
+
+.manager-stat {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--manager-card-foreground);
+}
+
+.manager-stat-label {
+  font-size: 13px;
+  color: var(--manager-muted-foreground);
+  font-weight: 500;
+}

@@ -1,0 +1,102 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-06-18 07:21:01.268605",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "currency_name",
+  "currency_code",
+  "symbol",
+  "is_base",
+  "is_active",
+  "decimal_places",
+  "fraction_name",
+  "fraction_per_unit",
+  "business"
+ ],
+ "fields": [
+  {
+   "fieldname": "currency_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Currency Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "currency_code",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Currency Code",
+   "reqd": 1
+  },
+  {
+   "fieldname": "symbol",
+   "fieldtype": "Data",
+   "label": "Symbol"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_base",
+   "fieldtype": "Check",
+   "label": "Base Currency"
+  },
+  {
+   "default": "1",
+   "fieldname": "is_active",
+   "fieldtype": "Check",
+   "label": "Active"
+  },
+  {
+   "default": "2",
+   "fieldname": "decimal_places",
+   "fieldtype": "Int",
+   "label": "Decimal Places"
+  },
+  {
+   "fieldname": "fraction_name",
+   "fieldtype": "Data",
+   "label": "Fraction Name"
+  },
+  {
+   "default": "100",
+   "fieldname": "fraction_per_unit",
+   "fieldtype": "Int",
+   "label": "Fraction Per Unit"
+  },
+  {
+   "fieldname": "business",
+   "fieldtype": "Link",
+   "label": "Business",
+   "options": "Business"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-06-18 07:21:01.268605",
+ "modified_by": "Administrator",
+ "module": "Accounting",
+ "name": "Currency",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

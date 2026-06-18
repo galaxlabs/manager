@@ -1,0 +1,67 @@
+{
+  "doctype": "DocType",
+  "name": "Custom Field Def",
+  "module": "Accounting",
+  "custom": 0,
+  "is_submittable": 0,
+  "istable": 0,
+  "fields": [
+    {
+      "fieldname": "field_label",
+      "fieldtype": "Data",
+      "label": "Field Label",
+      "reqd": 1
+    },
+    {
+      "fieldname": "field_name",
+      "fieldtype": "Data",
+      "label": "Field Name (snake_case)",
+      "reqd": 1
+    },
+    {
+      "fieldname": "field_type",
+      "fieldtype": "Select",
+      "label": "Field Type",
+      "options": "Data\nCurrency\nDate\nCheck\nSelect\nText",
+      "reqd": 1
+    },
+    {
+      "fieldname": "options",
+      "fieldtype": "Data",
+      "label": "Options (for Select, comma-separated)",
+      "description": "For Select type: Option1,Option2,Option3"
+    },
+    {
+      "fieldname": "target_doctype",
+      "fieldtype": "Select",
+      "label": "Target Doctype",
+      "reqd": 1,
+      "options": "Sales Invoice\nPurchase Invoice\nReceipt\nPayment\nSales Order\nPurchase Order\nJournal Entry\nCustomer\nSupplier\nItem\nEmployee\nFixed Asset\nDelivery Note\nCredit Note\nDebit Note"
+    },
+    {
+      "fieldname": "is_active",
+      "fieldtype": "Check",
+      "label": "Active"
+    },
+    {
+      "fieldname": "sort_order",
+      "fieldtype": "Int",
+      "label": "Sort Order"
+    },
+    {
+      "fieldname": "business",
+      "fieldtype": "Link",
+      "label": "Business",
+      "options": "Business"
+    }
+  ],
+  "permissions": [
+    {
+      "role": "System Manager",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 1
+    }
+  ]
+}

@@ -1,0 +1,104 @@
+{
+  "actions": [],
+  "allow_rename": 1,
+  "creation": "2026-06-17 15:39:48.396391",
+  "doctype": "DocType",
+  "editable_grid": 1,
+  "engine": "InnoDB",
+  "field_order": [
+    "title",
+    "investment_type",
+    "purchase_date",
+    "purchase_price",
+    "current_value",
+    "account",
+    "quantity",
+    "notes"
+  ],
+  "fields": [
+    {
+      "fieldname": "division",
+      "fieldtype": "Link",
+      "label": "Division",
+      "options": "Division"
+    },
+    {
+      "fieldname": "business",
+      "fieldtype": "Link",
+      "options": "Business",
+      "label": "Business",
+      "in_standard_filter": 1
+    },
+    {
+      "fieldname": "title",
+      "fieldtype": "Data",
+      "in_list_view": 1,
+      "label": "Title",
+      "reqd": 1
+    },
+    {
+      "fieldname": "investment_type",
+      "fieldtype": "Select",
+      "label": "Investment Type",
+      "options": "Stock\nBond\nMutual Fund\nReal Estate\nCryptocurrency\nOther"
+    },
+    {
+      "fieldname": "purchase_date",
+      "fieldtype": "Date",
+      "label": "Purchase Date"
+    },
+    {
+      "fieldname": "purchase_price",
+      "fieldtype": "Currency",
+      "label": "Purchase Price"
+    },
+    {
+      "fieldname": "current_value",
+      "fieldtype": "Currency",
+      "label": "Current Value"
+    },
+    {
+      "fieldname": "account",
+      "fieldtype": "Link",
+      "label": "Account",
+      "options": "Account"
+    },
+    {
+      "fieldname": "quantity",
+      "fieldtype": "Float",
+      "label": "Quantity"
+    },
+    {
+      "fieldname": "notes",
+      "fieldtype": "Text",
+      "label": "Notes"
+    }
+  ],
+  "grid_page_length": 50,
+  "index_web_pages_for_search": 1,
+  "links": [],
+  "modified": "2026-06-17 15:39:48.396391",
+  "modified_by": "Administrator",
+  "module": "FixedAssets",
+  "name": "Investment",
+  "owner": "Administrator",
+  "permissions": [
+    {
+      "create": 1,
+      "delete": 1,
+      "email": 1,
+      "export": 1,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "System Manager",
+      "share": 1,
+      "write": 1
+    }
+  ],
+  "row_format": "Dynamic",
+  "rows_threshold_for_grid_search": 20,
+  "sort_field": "modified",
+  "sort_order": "DESC",
+  "states": []
+}

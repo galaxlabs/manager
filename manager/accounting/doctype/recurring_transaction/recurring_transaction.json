@@ -1,0 +1,64 @@
+{
+  "doctype": "DocType",
+  "name": "Recurring Transaction",
+  "module": "Accounting",
+  "custom": 0,
+  "is_submittable": 0,
+  "is_child_table": 0,
+  "istable": 0,
+  "fields": [
+    {
+      "fieldname": "title",
+      "fieldtype": "Data",
+      "label": "Title",
+      "reqd": 1
+    },
+    {
+      "fieldname": "reference_doctype",
+      "fieldtype": "Select",
+      "label": "Document Type",
+      "options": "Sales Invoice\nPurchase Invoice\nReceipt\nPayment\nJournal Entry",
+      "reqd": 1
+    },
+    {
+      "fieldname": "frequency",
+      "fieldtype": "Select",
+      "label": "Frequency",
+      "options": "Daily\nWeekly\nMonthly\nQuarterly\nYearly",
+      "reqd": 1,
+      "default": "Monthly"
+    },
+    {
+      "fieldname": "next_date",
+      "fieldtype": "Date",
+      "label": "Next Run Date",
+      "reqd": 1
+    },
+    {
+      "fieldname": "enabled",
+      "fieldtype": "Check",
+      "label": "Enabled",
+      "default": 1
+    },
+    {
+      "fieldname": "template_data",
+      "fieldtype": "JSON",
+      "label": "Template Data"
+    },
+    {
+      "fieldname": "business",
+      "fieldtype": "Link",
+      "options": "Business",
+      "label": "Business"
+    }
+  ],
+  "permissions": [
+    {
+      "role": "System Manager",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 1
+    }
+  ]
+}

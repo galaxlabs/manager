@@ -1,0 +1,44 @@
+{
+  "doctype": "DocType",
+  "name": "Budget",
+  "module": "Accounting",
+  "custom": 0,
+  "is_submittable": 0,
+  "is_child_table": 0,
+  "istable": 0,
+  "fields": [
+    {
+      "fieldname": "budget_name",
+      "fieldtype": "Data",
+      "label": "Budget Name",
+      "reqd": 1
+    },
+    {
+      "fieldname": "fiscal_year",
+      "fieldtype": "Data",
+      "label": "Fiscal Year",
+      "reqd": 1
+    },
+    {
+      "fieldname": "accounts",
+      "fieldtype": "Table",
+      "options": "Budget Account",
+      "label": "Budget Accounts"
+    },
+    {
+      "fieldname": "business",
+      "fieldtype": "Link",
+      "options": "Business",
+      "label": "Business"
+    }
+  ],
+  "permissions": [
+    {
+      "role": "System Manager",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 1
+    }
+  ]
+}

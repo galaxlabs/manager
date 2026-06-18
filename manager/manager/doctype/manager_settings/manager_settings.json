@@ -1,0 +1,208 @@
+{
+  "actions": [],
+  "allow_rename": 1,
+  "creation": "2026-06-17 13:06:29.740863",
+  "doctype": "DocType",
+  "editable_grid": 1,
+  "engine": "InnoDB",
+  "issingle": 1,
+  "field_order": [
+    "company_name",
+    "company_address",
+    "company_email",
+    "company_phone",
+    "currency",
+    "date_format",
+    "fiscal_year_start",
+    "first_month_of_financial_year",
+    "sb_modules",
+    "module_sales",
+    "module_purchases",
+    "module_banking",
+    "module_inventory",
+    "module_payroll",
+    "module_fixed_assets",
+    "module_accounting",
+    "sb_chart",
+    "chart_of_accounts_imported"
+  ],
+  "fields": [
+    {
+      "fieldname": "business",
+      "fieldtype": "Link",
+      "options": "Business",
+      "label": "Business",
+      "in_standard_filter": 1
+    },
+    {
+      "fieldname": "company_name",
+      "fieldtype": "Data",
+      "in_list_view": 1,
+      "label": "Company Name",
+      "reqd": 1
+    },
+    {
+      "fieldname": "company_address",
+      "fieldtype": "Small Text",
+      "label": "Company Address"
+    },
+    {
+      "fieldname": "company_email",
+      "fieldtype": "Data",
+      "label": "Company Email"
+    },
+    {
+      "fieldname": "company_phone",
+      "fieldtype": "Data",
+      "label": "Company Phone"
+    },
+    {
+      "default": "USD",
+      "fieldname": "currency",
+      "fieldtype": "Select",
+      "label": "Base Currency",
+      "options": "USD\nEUR\nGBP\nPKR\nINR\nAED"
+    },
+    {
+      "default": "MM/DD/YYYY",
+      "fieldname": "date_format",
+      "fieldtype": "Select",
+      "label": "Date Format",
+      "options": "MM/DD/YYYY\nDD/MM/YYYY\nYYYY-MM-DD"
+    },
+    {
+      "fieldname": "fiscal_year_start",
+      "fieldtype": "Date",
+      "label": "Fiscal Year Start"
+    },
+    {
+      "default": "January",
+      "fieldname": "first_month_of_financial_year",
+      "fieldtype": "Select",
+      "label": "First Month of FY",
+      "options": "January\nFebruary\nMarch\nApril\nMay\nJune\nJuly\nAugust\nSeptember\nOctober\nNovember\nDecember"
+    },
+    {
+      "fieldname": "sb_modules",
+      "fieldtype": "Section Break",
+      "label": "Module Settings"
+    },
+    {
+      "default": "1",
+      "fieldname": "module_sales",
+      "fieldtype": "Check",
+      "label": "Enable Sales"
+    },
+    {
+      "default": "1",
+      "fieldname": "module_purchases",
+      "fieldtype": "Check",
+      "label": "Enable Purchases"
+    },
+    {
+      "default": "1",
+      "fieldname": "module_banking",
+      "fieldtype": "Check",
+      "label": "Enable Banking"
+    },
+    {
+      "default": "1",
+      "fieldname": "module_inventory",
+      "fieldtype": "Check",
+      "label": "Enable Inventory"
+    },
+    {
+      "default": "0",
+      "fieldname": "module_payroll",
+      "fieldtype": "Check",
+      "label": "Enable Payroll"
+    },
+    {
+      "default": "1",
+      "fieldname": "module_fixed_assets",
+      "fieldtype": "Check",
+      "label": "Enable Fixed Assets"
+    },
+    {
+      "default": "1",
+      "fieldname": "module_accounting",
+      "fieldtype": "Check",
+      "label": "Enable Accounting"
+    },
+    {
+      "fieldname": "sb_chart",
+      "fieldtype": "Section Break",
+      "label": "Chart of Accounts"
+    },
+    {
+      "default": "0",
+      "fieldname": "chart_of_accounts_imported",
+      "fieldtype": "Check",
+      "label": "Chart of Accounts Imported",
+      "read_only": 1
+    },
+    {
+      "fieldname": "sb_tax",
+      "fieldtype": "Section Break",
+      "label": "Tax Settings"
+    },
+    {
+      "fieldname": "company_tax_id",
+      "fieldtype": "Data",
+      "label": "Company Tax ID"
+    },
+    {
+      "fieldname": "default_tax_code",
+      "fieldtype": "Link",
+      "label": "Default Tax Code",
+      "options": "Tax Code"
+    },
+    {
+      "fieldname": "sb_lock",
+      "fieldtype": "Section Break",
+      "label": "Locking"
+    },
+    {
+      "fieldname": "lock_date",
+      "fieldtype": "Date",
+      "label": "Lock Date (prevent editing before)"
+    },
+    {
+      "fieldname": "sb_currency",
+      "fieldtype": "Section Break",
+      "label": "Multi-Currency"
+    },
+    {
+      "fieldname": "enable_multi_currency",
+      "fieldtype": "Check",
+      "label": "Enable Multi-Currency"
+    }
+  ],
+  "grid_page_length": 50,
+  "index_web_pages_for_search": 1,
+  "links": [],
+  "modified": "2026-06-17 13:06:29.740863",
+  "modified_by": "Administrator",
+  "module": "Accounting",
+  "name": "Manager Settings",
+  "owner": "Administrator",
+  "permissions": [
+    {
+      "create": 1,
+      "delete": 1,
+      "email": 1,
+      "export": 1,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "System Manager",
+      "share": 1,
+      "write": 1
+    }
+  ],
+  "row_format": "Dynamic",
+  "rows_threshold_for_grid_search": 20,
+  "sort_field": "modified",
+  "sort_order": "DESC",
+  "states": []
+}

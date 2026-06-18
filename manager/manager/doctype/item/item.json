@@ -1,0 +1,102 @@
+{
+  "actions": [],
+  "allow_rename": 1,
+  "autoname": "field:item_code",
+  "creation": "2026-06-17 12:45:41.191779",
+  "doctype": "DocType",
+  "editable_grid": 1,
+  "engine": "InnoDB",
+  "field_order": [
+    "item_code",
+    "item_name",
+    "unit",
+    "selling_price",
+    "purchase_price",
+    "stock_quantity",
+    "item_type",
+    "description"
+  ],
+  "fields": [
+    {
+      "fieldname": "business",
+      "fieldtype": "Link",
+      "options": "Business",
+      "label": "Business",
+      "in_standard_filter": 1
+    },
+    {
+      "fieldname": "item_code",
+      "fieldtype": "Data",
+      "in_list_view": 1,
+      "label": "Code",
+      "reqd": 1,
+      "unique": 1
+    },
+    {
+      "fieldname": "item_name",
+      "fieldtype": "Data",
+      "in_list_view": 1,
+      "label": "Name",
+      "reqd": 1
+    },
+    {
+      "fieldname": "unit",
+      "fieldtype": "Data",
+      "label": "Unit"
+    },
+    {
+      "fieldname": "selling_price",
+      "fieldtype": "Currency",
+      "label": "Selling Price"
+    },
+    {
+      "fieldname": "purchase_price",
+      "fieldtype": "Currency",
+      "label": "Purchase Price"
+    },
+    {
+      "default": "0",
+      "fieldname": "stock_quantity",
+      "fieldtype": "Float",
+      "label": "Stock Quantity",
+      "read_only": 1
+    },
+    {
+      "default": "Product",
+      "fieldname": "item_type",
+      "fieldtype": "Select",
+      "label": "Type",
+      "options": "Product\nService"
+    },
+    {
+      "fieldname": "description",
+      "fieldtype": "Text Editor",
+      "label": "Description"
+    },
+    {
+      "fieldname": "valuation_rate",
+      "fieldtype": "Currency",
+      "label": "Valuation Rate"
+    },
+    {
+      "fieldname": "stock_value",
+      "fieldtype": "Currency",
+      "label": "Stock Value"
+    }
+  ],
+  "grid_page_length": 50,
+  "index_web_pages_for_search": 1,
+  "links": [],
+  "modified": "2026-06-17 12:45:41.191779",
+  "modified_by": "Administrator",
+  "module": "Inventory",
+  "name": "Item",
+  "owner": "Administrator",
+  "permissions": [],
+  "row_format": "Dynamic",
+  "rows_threshold_for_grid_search": 20,
+  "sort_field": "modified",
+  "sort_order": "DESC",
+  "states": [],
+  "track_changes": 1
+}

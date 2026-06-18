@@ -1,0 +1,31 @@
+{
+  "doctype": "DocType",
+  "name": "Division",
+  "module": "Accounting",
+  "custom": 0,
+  "is_submittable": 0,
+  "istable": 0,
+  "fields": [
+    {
+      "fieldname": "division_name",
+      "fieldtype": "Data",
+      "label": "Division Name",
+      "reqd": 1
+    },
+    {
+      "fieldname": "business",
+      "fieldtype": "Link",
+      "label": "Business",
+      "options": "Business"
+    }
+  ],
+  "permissions": [
+    {
+      "role": "System Manager",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 1
+    }
+  ]
+}

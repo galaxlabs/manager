@@ -1,0 +1,106 @@
+{
+  "actions": [],
+  "allow_rename": 1,
+  "autoname": "field:asset_code",
+  "creation": "2026-06-17 12:45:41.744348",
+  "doctype": "DocType",
+  "editable_grid": 1,
+  "engine": "InnoDB",
+  "field_order": [
+    "asset_code",
+    "asset_name",
+    "description",
+    "acquisition_cost",
+    "depreciation",
+    "book_value",
+    "acquisition_date",
+    "status"
+  ],
+  "fields": [
+    {
+      "fieldname": "division",
+      "fieldtype": "Link",
+      "label": "Division",
+      "options": "Division"
+    },
+    {
+      "fieldname": "business",
+      "fieldtype": "Link",
+      "options": "Business",
+      "label": "Business",
+      "in_standard_filter": 1
+    },
+    {
+      "fieldname": "asset_code",
+      "fieldtype": "Data",
+      "in_list_view": 1,
+      "label": "Code",
+      "reqd": 1,
+      "unique": 1
+    },
+    {
+      "fieldname": "asset_name",
+      "fieldtype": "Data",
+      "in_list_view": 1,
+      "label": "Name",
+      "reqd": 1
+    },
+    {
+      "fieldname": "description",
+      "fieldtype": "Small Text",
+      "label": "Description"
+    },
+    {
+      "fieldname": "acquisition_cost",
+      "fieldtype": "Currency",
+      "in_list_view": 1,
+      "label": "Acquisition Cost",
+      "reqd": 1
+    },
+    {
+      "default": "0",
+      "fieldname": "depreciation",
+      "fieldtype": "Currency",
+      "label": "Depreciation",
+      "read_only": 1
+    },
+    {
+      "fieldname": "book_value",
+      "fieldtype": "Currency",
+      "label": "Book Value",
+      "read_only": 1
+    },
+    {
+      "fieldname": "acquisition_date",
+      "fieldtype": "Date",
+      "label": "Acquisition Date"
+    },
+    {
+      "default": "Active",
+      "fieldname": "status",
+      "fieldtype": "Select",
+      "label": "Status",
+      "options": "Active\nDisposed\nFully Depreciated"
+    },
+    {
+      "fieldname": "custom_fields_json",
+      "fieldtype": "JSON",
+      "label": "Custom Fields"
+    }
+  ],
+  "grid_page_length": 50,
+  "index_web_pages_for_search": 1,
+  "links": [],
+  "modified": "2026-06-17 12:45:41.744348",
+  "modified_by": "Administrator",
+  "module": "FixedAssets",
+  "name": "Fixed Asset",
+  "owner": "Administrator",
+  "permissions": [],
+  "row_format": "Dynamic",
+  "rows_threshold_for_grid_search": 20,
+  "sort_field": "modified",
+  "sort_order": "DESC",
+  "states": [],
+  "track_changes": 1
+}

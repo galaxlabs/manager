@@ -1,0 +1,36 @@
+{
+  "charts": [],
+  "content": "[{\"type\": \"header\", \"data\": {\"text\": \"<span class=h4><b>Sales</b></span>\", \"col\": 12}}, {\"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Customers\", \"link_to\": \"Customer\", \"doc_view\": \"List\", \"type\": \"DocType\", \"icon\": \"fa fa-people-group\", \"format\": \"Not Set\", \"color\": \"Blue\", \"col\": 3, \"label\": \"Customers\"}, \"id\": \"customer\"}, {\"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Sales Orders\", \"link_to\": \"Sales Order\", \"doc_view\": \"List\", \"type\": \"DocType\", \"icon\": \"fa fa-cart-plus\", \"format\": \"Not Set\", \"color\": \"Blue\", \"col\": 3, \"label\": \"Orders\"}, \"id\": \"sales-order\"}, {\"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Sales Invoices\", \"link_to\": \"Sales Invoice\", \"doc_view\": \"List\", \"type\": \"DocType\", \"icon\": \"fa fa-file-invoice\", \"format\": \"Not Set\", \"color\": \"Blue\", \"col\": 3, \"label\": \"Invoices\"}, \"id\": \"sales-invoice\"}, {\"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Delivery Notes\", \"link_to\": \"Delivery Note\", \"doc_view\": \"List\", \"type\": \"DocType\", \"icon\": \"fa fa-truck\", \"format\": \"Not Set\", \"color\": \"Blue\", \"col\": 3, \"label\": \"Delivery Notes\"}, \"id\": \"delivery-note\"}]",
+  "creation": "2026-06-17 14:06:02.634070",
+  "custom_blocks": [],
+  "docstatus": 0,
+  "doctype": "Workspace",
+  "hide_custom": 0,
+  "icon": "fa fa-shopping-cart",
+  "idx": 0,
+  "indicator_color": "green",
+  "is_hidden": 0,
+  "label": "Sales",
+  "links": [],
+  "modified": "2026-06-17 14:06:02.634070",
+  "modified_by": "Administrator",
+  "module": "Sales",
+  "name": "Sales",
+  "number_cards": [],
+  "owner": "Administrator",
+  "public": 1,
+  "quick_lists": [],
+  "roles": [],
+  "sequence_id": 0.0,
+  "shortcuts": [],
+  "title": "Sales",
+  "fields": [
+    {
+      "fieldname": "business",
+      "fieldtype": "Link",
+      "options": "Business",
+      "label": "Business",
+      "in_standard_filter": 1
+    }
+  ]
+}

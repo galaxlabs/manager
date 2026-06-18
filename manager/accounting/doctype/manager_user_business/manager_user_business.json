@@ -1,0 +1,44 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-06-18 07:31:48.492510",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "business",
+  "is_default"
+ ],
+ "fields": [
+  {
+   "fieldname": "business",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Business",
+   "options": "Business",
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "is_default",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Default"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-06-18 07:31:48.492510",
+ "modified_by": "Administrator",
+ "module": "Accounting",
+ "name": "Manager User Business",
+ "owner": "Administrator",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

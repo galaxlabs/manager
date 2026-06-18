@@ -1,0 +1,136 @@
+{
+  "actions": [],
+  "allow_rename": 1,
+  "autoname": "naming_series:",
+  "creation": "2026-06-17 12:45:41.898523",
+  "doctype": "DocType",
+  "editable_grid": 1,
+  "engine": "InnoDB",
+  "field_order": [
+    "naming_series",
+    "date",
+    "reference",
+    "supplier",
+    "description",
+    "items",
+    "order_amount",
+    "amended_from"
+  ],
+  "fields": [
+    {
+      "fieldname": "currency",
+      "fieldtype": "Select",
+      "label": "Currency",
+      "options": "USD\nEUR\nGBP\nPKR\nINR\nAED\nSAR\nQAR\nOMR\nBHD\nKWD\nMYR\nSGD\nNZD\nAUD\nZAR\nNGN\nEGP\nJOD\nMUR\nGHS",
+      "default": "USD",
+      "in_list_view": 1,
+      "in_standard_filter": 1
+    },
+    {
+      "fieldname": "exchange_rate",
+      "fieldtype": "Float",
+      "label": "Exchange Rate",
+      "description": "Rate: 1 base currency = X this currency",
+      "default": 1.0
+    },
+    {
+      "fieldname": "division",
+      "fieldtype": "Link",
+      "label": "Division",
+      "options": "Division"
+    },
+    {
+      "fieldname": "business",
+      "fieldtype": "Link",
+      "options": "Business",
+      "label": "Business",
+      "in_standard_filter": 1
+    },
+    {
+      "default": "PORD-",
+      "fieldname": "naming_series",
+      "fieldtype": "Select",
+      "hidden": 1,
+      "label": "Series",
+      "options": "PORD-\nPO-"
+    },
+    {
+      "default": "Today",
+      "fieldname": "date",
+      "fieldtype": "Date",
+      "in_list_view": 1,
+      "label": "Date",
+      "reqd": 1
+    },
+    {
+      "fieldname": "reference",
+      "fieldtype": "Data",
+      "label": "Reference"
+    },
+    {
+      "fieldname": "supplier",
+      "fieldtype": "Link",
+      "in_list_view": 1,
+      "label": "Supplier",
+      "options": "Supplier",
+      "reqd": 1
+    },
+    {
+      "fieldname": "description",
+      "fieldtype": "Small Text",
+      "label": "Description"
+    },
+    {
+      "fieldname": "items",
+      "fieldtype": "Table",
+      "label": "Order Items",
+      "options": "Invoice Item",
+      "reqd": 0
+    },
+    {
+      "fieldname": "order_amount",
+      "fieldtype": "Currency",
+      "label": "Order Amount",
+      "read_only": 1
+    },
+    {
+      "fieldname": "amended_from",
+      "fieldtype": "Link",
+      "label": "Amended From",
+      "no_copy": 1,
+      "options": "Purchase Order",
+      "print_hide": 1,
+      "read_only": 1,
+      "search_index": 1
+    },
+    {
+      "fieldname": "status",
+      "fieldtype": "Select",
+      "options": "Draft\nSubmitted\nCancelled",
+      "label": "Status",
+      "allow_on_submit": true,
+      "reqd": false
+    },
+    {
+      "fieldname": "custom_fields_json",
+      "fieldtype": "JSON",
+      "label": "Custom Fields"
+    }
+  ],
+  "grid_page_length": 50,
+  "index_web_pages_for_search": 1,
+  "is_submittable": 1,
+  "links": [],
+  "modified": "2026-06-17 12:45:41.898523",
+  "modified_by": "Administrator",
+  "module": "Purchases",
+  "name": "Purchase Order",
+  "owner": "Administrator",
+  "permissions": [],
+  "row_format": "Dynamic",
+  "rows_threshold_for_grid_search": 20,
+  "sort_field": "modified",
+  "sort_order": "DESC",
+  "states": [],
+  "track_changes": 1
+}

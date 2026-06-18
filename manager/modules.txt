@@ -1,1 +1,7 @@
-Manager
+Sales
+Purchases
+Banking
+Inventory
+Accounting
+Payroll
+FixedAssets
