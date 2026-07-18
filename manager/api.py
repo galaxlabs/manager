@@ -1882,3 +1882,52 @@ def import_csv(doctype, data):
             errors.append({"row": row, "error": str(e)})
     frappe.db.commit()
     return {"created": created, "errors": errors}
+
+@frappe.whitelist(allow_guest=True)
+def get_current_user():
+    """Return SPA-safe auth state for the current Frappe session."""
+    user = frappe.session.user
+    if not user or user == "Guest":
+        return {
+            "is_authenticated": False,
+            "message": "Guest",
+            "user": None,
+            "name": "Guest",
+            "email": None,
+            "full_name": "Guest",
+            "roles": [],
+            "role": None,
+            "business": None,
+            "businesses": [],
+            "permissions": {},
+        }
+
+    info = frappe.db.get_value(
+        "User",
+        user,
+        ["name", "email", "full_name", "first_name", "last_name", "enabled"],
+        as_dict=True,
+    ) or {}
+    mu = get_current_manager_user()
+    role = mu.get("role", "Administrator") if mu else "Administrator"
+    return {
+        "is_authenticated": True,
+        "message": user,
+        "user": user,
+        "name": user,
+        "email": info.get("email") or user,
+        "full_name": info.get("full_name") or info.get("first_name") or user,
+        "first_name": info.get("first_name"),
+        "last_name": info.get("last_name"),
+        "enabled": info.get("enabled"),
+        "roles": [r for r in frappe.get_roles(user) if r not in ("All", "Guest")],
+        "role": role,
+        "business": get_user_business(),
+        "businesses": get_user_businesses(),
+        "permissions": _get_role_permissions(role),
+    }
+
+
+@frappe.whitelist(allow_guest=True)
+def get_me():
+    return get_current_user()
