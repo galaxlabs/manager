@@ -1844,20 +1844,37 @@ def _create_from_template(doc):
 @frappe.whitelist()
 def get_stock_balance():
     _check_permission("Item", "read")
-    items = frappe.get_all("Item", fields=["name", "item_name", "item_type", "opening_stock", "opening_value"])
+    item_meta = frappe.get_meta("Item")
+    item_fields = {df.fieldname for df in item_meta.fields}
+    fields = ["name", "item_name", "item_type"]
+    optional_fields = [
+        "stock_quantity",
+        "opening_stock",
+        "stock_value",
+        "opening_value",
+        "valuation_rate",
+        "purchase_price",
+    ]
+    fields.extend(field for field in optional_fields if field in item_fields)
+
+    items = frappe.get_all("Item", fields=fields)
     result = []
     for item in items:
-        qty = item.opening_stock or 0
-        val = item.opening_value or 0
-        transfers_in = frappe.db.get_all("Inventory Transfer Item", filters={"item": item.name}, pluck="quantity")
-        for tq in transfers_in:
-            qty += tq or 0
+        qty = item.get("stock_quantity")
+        if qty is None:
+            qty = item.get("opening_stock") or 0
+        val = item.get("stock_value")
+        if val is None:
+            val = item.get("opening_value")
+        if val is None:
+            rate = item.get("valuation_rate") or item.get("purchase_price") or 0
+            val = (qty or 0) * rate
         result.append({
             "name": item.name,
             "item_name": item.item_name or item.name,
             "item_type": item.item_type,
-            "quantity": qty,
-            "value": val,
+            "quantity": qty or 0,
+            "value": val or 0,
         })
     return {"data": result}
 
