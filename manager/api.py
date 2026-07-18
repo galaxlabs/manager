@@ -57,7 +57,7 @@ def _get_role_permissions(role):
         "Employee", "Payslip", "Fixed Asset", "Depreciation Entry", "Intangible Asset",
         "Amortization Entry", "Investment",
         "Journal Entry", "Folder", "Recurring Transaction", "Budget", "Budget Account",
-        "Division", "Currency", "Exchange Rate", "Manager Settings", "Tax Code", "Custom Field Def",
+        "Division", "Currency", "Exchange Rate", "Business", "Manager Settings", "Tax Code", "Custom Field Def",
         "Project", "Manager User"]
     if role == "Administrator":
         return {dt: {"read": 1, "write": 1, "create": 1, "delete": 1, "submit": 1, "cancel": 1} for dt in all_doctypes}
@@ -1902,7 +1902,7 @@ def import_csv(doctype, data):
 
 @frappe.whitelist(allow_guest=True)
 def get_current_user():
-    """Return SPA-safe auth state for the current Frappe session."""
+    """Return lightweight SPA-safe auth state for the current Frappe session."""
     user = frappe.session.user
     if not user or user == "Guest":
         return {
@@ -1912,11 +1912,6 @@ def get_current_user():
             "name": "Guest",
             "email": None,
             "full_name": "Guest",
-            "roles": [],
-            "role": None,
-            "business": None,
-            "businesses": [],
-            "permissions": {},
         }
 
     info = frappe.db.get_value(
@@ -1925,8 +1920,6 @@ def get_current_user():
         ["name", "email", "full_name", "first_name", "last_name", "enabled"],
         as_dict=True,
     ) or {}
-    mu = get_current_manager_user()
-    role = mu.get("role", "Administrator") if mu else "Administrator"
     return {
         "is_authenticated": True,
         "message": user,
@@ -1937,11 +1930,6 @@ def get_current_user():
         "first_name": info.get("first_name"),
         "last_name": info.get("last_name"),
         "enabled": info.get("enabled"),
-        "roles": [r for r in frappe.get_roles(user) if r not in ("All", "Guest")],
-        "role": role,
-        "business": get_user_business(),
-        "businesses": get_user_businesses(),
-        "permissions": _get_role_permissions(role),
     }
 
 
